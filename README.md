@@ -1,0 +1,1 @@
+# myidol_project
