@@ -1,14 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import { BrowserRouter as Router } from "react-router-dom";
+import { createBrowserRouter,RouterProvider } from "react-router-dom";
+import Login from "@pages/Login/Login";
+import Admin from "@pages/Admin/Admin";
 
+const router = createBrowserRouter([
+  {path: "/login", element: <Login />},
+  {path: "/admin", element: <Admin /},
+])
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
-  </React.StrictMode>,
-);
+const rootElement = document.getElementById("root");
+
+if(rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  )
+}
 
