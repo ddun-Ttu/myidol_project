@@ -11,7 +11,7 @@
     "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
-      "@pages/*": ["pages/*"],
+      "@pages/*": ["pages/*"]
     },
 
     // 모듈 해상도 및 번들러 옵션
