@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import Login from "./pages/Login/Login";
-import Admin from "./pages/Admin/Admin";
+import Admin from "./pages/admin/Admin";
 
 const router = createBrowserRouter([
   {path: "/login", element: <Login />},
