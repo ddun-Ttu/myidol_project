@@ -6,7 +6,7 @@ import Admin from "@pages/Admin/Admin";
 
 const router = createBrowserRouter([
   {path: "/login", element: <Login />},
-  {path: "/admin", element: <Admin /},
+  {path: "/admin", element: <Admin />},
 ])
 
 const rootElement = document.getElementById("root");
