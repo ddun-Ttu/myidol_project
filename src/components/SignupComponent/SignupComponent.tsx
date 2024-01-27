@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "../../styles/Container";
+import { Link } from "react-router-dom";
 
 import {
   Logo,
@@ -46,9 +47,11 @@ const SignupComponent = () => {
 
       <Padding>
         <P1>이미 회원가입을 하셨다면</P1>
-        <a>
-          <P2>로그인하기</P2>
-        </a>
+        <Link to="/login">
+          <P2>로그인하기</P2>   
+        </Link>
+          
+        
       </Padding>
     </Container>
   );
