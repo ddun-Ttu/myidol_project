@@ -1,5 +1,8 @@
 import { Container } from "../../styles/Container";
 import { Link } from "react-router-dom";
+import { useState, ChangeEvent, FormEvent } from "react";
+import React from "react";
+import { useNavigate } from 'react-router-dom';
 
 import {
   Logo,
@@ -16,6 +19,28 @@ import {
 import logo from "../../assets/Icons/MainLogo.svg";
 
 const LoginComponent = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChange = (event: { target: { name: any; value: any } }) => {
+    const {
+      target: { name, value },
+    } = event;
+    if (name === "email") {
+      setEmail(value);
+    }
+    if (name === "password") {
+      setPassword(value);
+    }
+  };
+
+  const signin = (event: React.FormEvent) => {
+    event.preventDefault();
+    const navigate = useNavigate();
+    navigate('/signup');
+
+  };
+
   return (
     <Container>
       <div>
@@ -27,15 +52,27 @@ const LoginComponent = () => {
         </div>
         <LoginForm>
           <div>
-            <LoginInput placeholder="이메일" type="email"></LoginInput>
+            <LoginInput
+              type="email"
+              value={email}
+              name="email"
+              onChange={onChange}
+              required
+            ></LoginInput>
           </div>
           <div>
-            <LoginInput placeholder="비밀번호" type="password"></LoginInput>
+            <LoginInput
+              type="password"
+              value={password}
+              name="password"
+              onChange={onChange}
+              required
+            ></LoginInput>
           </div>
         </LoginForm>
 
         <div>
-          <Button>로그인하기</Button>
+          <Button onClick={signin}>로그인하기</Button>
         </div>
       </DivLogin1>
 

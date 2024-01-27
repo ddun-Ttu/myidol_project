@@ -1,6 +1,11 @@
 import React from "react";
+import { useState, useEffect,ChangeEvent, FormEvent } from "react";
 import { Container } from "../../styles/Container";
 import { Link } from "react-router-dom";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
+import { useNavigate } from "react-router-dom";
 
 import {
   Logo,
@@ -15,6 +20,7 @@ import {
 import logo from "../../assets/Icons/MainLogo.svg";
 
 const SignupComponent = () => {
+
   return (
     <Container>
       <div>
@@ -27,20 +33,38 @@ const SignupComponent = () => {
             <SignupInput placeholder="이름" type="text"></SignupInput>
           </div>
           <div>
-            <SignupInput placeholder="이메일" type="email"></SignupInput>
-          </div>
-          <div>
-            <SignupInput placeholder="비밀번호" type="password"></SignupInput>
+            <SignupInput
+              type="email"
+              name="email"
+              value={email}
+              onChange={onChange}
+              placeholder="이메일"
+              required
+            ></SignupInput>
           </div>
           <div>
             <SignupInput
-              placeholder="비밀번호 확인"
               type="password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              placeholder="비밀번호"
+              required
+            ></SignupInput>
+          </div>
+          <div>
+            <SignupInput
+              type="password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              placeholder="비밀번호 확인"
+              required
             ></SignupInput>
           </div>
 
           <div>
-            <Button>회원가입하기</Button>
+            <Button onClick={}>회원가입하기</Button>
           </div>
         </SignupForm>
       </div>
@@ -48,10 +72,8 @@ const SignupComponent = () => {
       <Padding>
         <P1>이미 회원가입을 하셨다면</P1>
         <Link to="/login">
-          <P2>로그인하기</P2>   
+          <P2>로그인하기</P2>
         </Link>
-          
-        
       </Padding>
     </Container>
   );
