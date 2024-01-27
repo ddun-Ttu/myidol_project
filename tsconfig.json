@@ -14,7 +14,8 @@
       "@components/*": ["components/*"],
       "@style/*": ["style/*"],
       "@assets/*": ["assets/*"],
-      "@src/*": ["./*"]
+      "@src/*": ["./*"],
+      "@firebase/*":["firebase/*"],
     },
 
     // 모듈 해상도 및 번들러 옵션

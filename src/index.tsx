@@ -5,6 +5,8 @@ import Login from "./pages/Login/Login";
 import Admin from "./pages/Admin/Admin";
 import Signup from "./pages/Signup/Signup";
 import GlobalStyles from "./styles/GlobalStyles";
+// import app from "./firebase/firebase";
+
 
 const router = createBrowserRouter([
   { path: "/login", element: <Login /> },
