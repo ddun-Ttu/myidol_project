@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { useState, ChangeEvent, FormEvent } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
 
 import {
   Logo,
   H1,
   DivLogin1,
-  DivLogin2,
   LoginInput,
   LoginForm,
   Button,
@@ -21,10 +22,39 @@ import logo from "../../assets/Icons/MainLogo.svg";
 const LoginComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { name, value },
+    } = event;
+    if (name === "email") {
+      setEmail(value);
+    }
+    if (name === "password") {
+      setPassword(value);
+    }
+  };
+
+  const SignIn = async (event: any) => {
+    event.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("유저 로그인 성공 ", userCredential.user);
+      navigate("/signup");
+    } catch (error: any) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log("유저 로그인 에러 ", errorCode, errorMessage);
+    }
+  };
   return (
     <Container>
-      {/* <div>
+      <div>
         <Logo src={logo} alt="로고" />
       </div>
       <DivLogin1>
@@ -37,7 +67,7 @@ const LoginComponent = () => {
               type="email"
               value={email}
               name="email"
-              onChange={}
+              onChange={onChange}
               required
             ></LoginInput>
           </div>
@@ -46,14 +76,14 @@ const LoginComponent = () => {
               type="password"
               value={password}
               name="password"
-              onChange={}
+              onChange={onChange}
               required
             ></LoginInput>
           </div>
         </LoginForm>
 
         <div>
-          <Button onClick={}>로그인하기</Button>
+          <Button onClick={SignIn}>로그인하기</Button>
         </div>
       </DivLogin1>
 
@@ -62,7 +92,7 @@ const LoginComponent = () => {
         <Link to="/signup">
           <P2>회원가입하기</P2>
         </Link>
-      </Padding> */}
+      </Padding>
     </Container>
   );
 };

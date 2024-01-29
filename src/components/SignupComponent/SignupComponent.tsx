@@ -25,6 +25,7 @@ import logo from "../../assets/Icons/MainLogo.svg";
 const SignupComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   // 유저 접속 여부 확인 -> 추후 uid 값으로 페이지 변환시키기
   useEffect(() => {
@@ -54,6 +55,8 @@ const SignupComponent = () => {
         email,
         password
       );
+      navigate("/login");
+
       console.log("유저 로그인 성공 ", userCredential.user);
     } catch (error: any) {
       const errorCode = error.code;
@@ -61,6 +64,8 @@ const SignupComponent = () => {
       console.log("유저 로그인 에러 ", errorCode, errorMessage);
     }
   };
+
+
 
   return (
     <Container>
