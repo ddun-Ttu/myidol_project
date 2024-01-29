@@ -2,7 +2,7 @@ import { Container } from "../../styles/Container";
 import { Link } from "react-router-dom";
 import { useState, ChangeEvent, FormEvent } from "react";
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import {
   Logo,
@@ -22,28 +22,9 @@ const LoginComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onChange = (event: { target: { name: any; value: any } }) => {
-    const {
-      target: { name, value },
-    } = event;
-    if (name === "email") {
-      setEmail(value);
-    }
-    if (name === "password") {
-      setPassword(value);
-    }
-  };
-
-  const signin = (event: React.FormEvent) => {
-    event.preventDefault();
-    const navigate = useNavigate();
-    navigate('/signup');
-
-  };
-
   return (
     <Container>
-      <div>
+      {/* <div>
         <Logo src={logo} alt="로고" />
       </div>
       <DivLogin1>
@@ -56,7 +37,7 @@ const LoginComponent = () => {
               type="email"
               value={email}
               name="email"
-              onChange={onChange}
+              onChange={}
               required
             ></LoginInput>
           </div>
@@ -65,14 +46,14 @@ const LoginComponent = () => {
               type="password"
               value={password}
               name="password"
-              onChange={onChange}
+              onChange={}
               required
             ></LoginInput>
           </div>
         </LoginForm>
 
         <div>
-          <Button onClick={signin}>로그인하기</Button>
+          <Button onClick={}>로그인하기</Button>
         </div>
       </DivLogin1>
 
@@ -81,7 +62,7 @@ const LoginComponent = () => {
         <Link to="/signup">
           <P2>회원가입하기</P2>
         </Link>
-      </Padding>
+      </Padding> */}
     </Container>
   );
 };

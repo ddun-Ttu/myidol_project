@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect,ChangeEvent, FormEvent } from "react";
+import { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import { Container } from "../../styles/Container";
 import { Link } from "react-router-dom";
 
@@ -20,6 +20,37 @@ import {
 import logo from "../../assets/Icons/MainLogo.svg";
 
 const SignupComponent = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { name, value },
+    } = event;
+    if (name === "email") {
+      setEmail(value);
+    }
+    if (name === "password") {
+      setPassword(value);
+    }
+  };
+
+  const SignUp = (event: any) => {
+    event.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log("유저 로그인 성공 ", user);
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log("유저 로그인 에러 ", errorCode, errorMessage);
+        // ..
+      });
+  };
 
   return (
     <Container>
@@ -64,7 +95,7 @@ const SignupComponent = () => {
           </div>
 
           <div>
-            <Button onClick={}>회원가입하기</Button>
+            <Button onClick={SignUp}>회원가입하기</Button>
           </div>
         </SignupForm>
       </div>
