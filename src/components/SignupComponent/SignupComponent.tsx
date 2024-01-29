@@ -35,21 +35,21 @@ const SignupComponent = () => {
     }
   };
 
-  const SignUp = (event: any) => {
+  const SignUp = async (event: any) => {
     event.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log("유저 로그인 성공 ", user);
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log("유저 로그인 에러 ", errorCode, errorMessage);
-        // ..
-      });
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("유저 로그인 성공 ", userCredential.user);
+    } catch (error : any) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log("유저 로그인 에러 ", errorCode, errorMessage);
+    }
   };
 
   return (
