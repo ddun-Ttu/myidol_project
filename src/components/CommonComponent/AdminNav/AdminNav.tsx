@@ -9,7 +9,7 @@ import {
   NavUl,
   NavLi,
   NavA,
-  NavImg,
+  EmptyCenter,
   NavP,
   NavLogo,
 } from "./AdminNavStyle";
@@ -23,6 +23,7 @@ const AdminNav = () => {
             <NavLogo src={logo} alt="logo"></NavLogo>
           </NavA>
         </NavLi>
+        <EmptyCenter />
 
         <NavLi>
           <NavA to="/">
