@@ -7,20 +7,16 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@components/*": ["./src/components/*"],
+      "@style/*": ["./src/style/*"],
+      "@assets/*": ["./src/assets/*"],
+      "@src/*": ["./src/*"],
     },
 
     // 새로 추가
     "allowSyntheticDefaultImports": true,
-    // "baseUrl": "./src",
-    // "paths": {
-    //   "@pages/*": ["pages/*"],
-    //   "@components/*": ["components/*"],
-    //   "@style/*": ["style/*"],
-    //   "@assets/*": ["assets/*"],
-    //   "@src/*": ["./*"],
-    //   "@firebase/*":["firebase/*"],
-    // },
 
     // 모듈 해상도 및 번들러 옵션
     "moduleResolution": "node",
