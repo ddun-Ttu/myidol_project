@@ -20,6 +20,7 @@ export const SignupForm = styled.form`
   text-align: center;
   margin-top: 4%;
 `;
+
 export const SignupInput = styled.input`
   padding: 4%;
   width: 70%;
