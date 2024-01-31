@@ -9,7 +9,6 @@ import AdminRegister from "../../components/AdminComponent/AdminRegister";
 const Admin = () => {
   return (
     <>
-      <AdminNav />
       <AdminMain />
     </>
   );

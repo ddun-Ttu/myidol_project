@@ -18,6 +18,7 @@ import {
 const AdminMain = () => {
   return (
     <>
+      <AdminNav />
       <TableDiv>
         <LinkBtn to="/admin/register">
           <AddButton>상품등록</AddButton>

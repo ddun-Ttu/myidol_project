@@ -1,5 +1,7 @@
 import React from "react";
 
+import AdminNav from "../CommonComponent/AdminNav/AdminNav";
+
 import {
   Form,
   Input,
@@ -17,6 +19,7 @@ import { ContainerWhite } from "../../styles/Container";
 const AdminRegister = () => {
   return (
     <ContainerWhite>
+      <AdminNav />
       <div>
         <H1>상품등록</H1>
       </div>
