@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 // 메인 페이지
 export const TableDiv = styled.div`
@@ -52,6 +53,7 @@ export const Button = styled.button`
   cursor: pointer;
   font-size: 16px;
 `;
+export const LinkBtn = styled(Link)``;
 
 export const Tr = styled.tr`
   border-bottom: 1px solid #000;
@@ -129,7 +131,6 @@ export const Select = styled.select`
   outline: none;
   color: #000;
   text-align: center;
-
 `;
 
 export const Option = styled.option`
@@ -153,21 +154,22 @@ export const TextArea = styled.textarea`
 `;
 
 export const Label = styled.label`
-font-size: 16px;
-font-weight: 600;
-color: #000;
-text-align: left;
-margin-left: 3rem;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  text-align: left;
+  margin-left: 3rem;
 `;
 
 export const RegisterButton = styled.button`
-width: 70%;
-height: 70px;
-border-radius: 50px;
-color: #fff;
-border: none;
-background-color: #000;
-cursor: pointer;
-font-size: 18px;
-font-weight: 700;
-margin:10% 0 3% 0;`
+  width: 70%;
+  height: 70px;
+  border-radius: 50px;
+  color: #fff;
+  border: none;
+  background-color: #000;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 10% 0 3% 0;
+`;

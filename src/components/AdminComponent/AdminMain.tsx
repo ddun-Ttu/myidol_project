@@ -11,15 +11,18 @@ import {
   Tr,
   AddButton,
   Tbody,
+  P2,
+  LinkBtn,
 } from "./AdminComponentStyle";
 
 const AdminMain = () => {
   return (
     <>
       <TableDiv>
-        <AddButton>
-            상품등록
-        </AddButton>
+        <LinkBtn to="/admin/register">
+          <AddButton>상품등록</AddButton>
+        </LinkBtn>
+
         <Table>
           <Thead>
             <tr>

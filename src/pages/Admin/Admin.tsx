@@ -10,7 +10,7 @@ const Admin = () => {
   return (
     <>
       <AdminNav />
-      <AdminRegister />
+      <AdminMain />
     </>
   );
 };
