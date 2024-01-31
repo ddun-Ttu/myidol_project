@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 export const Nav = styled.div`
   width: 100%;
   height: 80px;
-  position: fixed;
+  // position: fixed;
+  margin: ;
   z-index: 99;
   background-color: #000;
 `;
@@ -20,7 +21,6 @@ export const NavUl = styled.ul`
 export const NavLi = styled.li`
   padding: 1%;
   margin: auto 3rem;
-  
 `;
 
 export const NavA = styled(Link)`
@@ -44,5 +44,5 @@ export const NavLogo = styled.img`
 `;
 
 export const EmptyCenter = styled.div`
-flex-grow: 1;
-`
+  flex-grow: 1;
+`;
