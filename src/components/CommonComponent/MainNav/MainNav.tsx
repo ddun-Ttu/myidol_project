@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 
 import logo from "../../../assets/Icons/NavLogo.svg";
 
@@ -12,11 +10,12 @@ import {
   EmptyCenter,
   NavP,
   NavLogo,
-} from "./AdminNavStyle";
+} from "./MainNavStyle";
 
-const AdminNav = () => {
+const MainNav = () => {
   return (
-    <Nav>
+    <>
+      <Nav>
       <NavUl>
         <NavLi>
           <NavA to="/login">
@@ -27,7 +26,13 @@ const AdminNav = () => {
 
         <NavLi>
           <NavA to="/admin">
-            <NavP>관리자 페이지</NavP>
+            <NavP>장바구니</NavP>
+          </NavA>
+        </NavLi>
+
+        <NavLi>
+          <NavA to="/">
+            <NavP>내정보</NavP>
           </NavA>
         </NavLi>
 
@@ -38,7 +43,8 @@ const AdminNav = () => {
         </NavLi>
       </NavUl>
     </Nav>
+    </>
   );
 };
 
-export default AdminNav;
+export default MainNav;

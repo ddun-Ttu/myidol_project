@@ -5,6 +5,7 @@ import Login from "./pages/Login/Login";
 import Admin from "./pages/Admin/Admin";
 import Signup from "./pages/Signup/Signup";
 import AdminRegister from "./components/AdminComponent/AdminRegister";
+import Main from "./pages/Main/Main";
 import GlobalStyles from "./styles/GlobalStyles";
 // import app from "./firebase/firebase";
 
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
   { path: "/admin", element: <Admin /> },
   { path: "/signup", element: <Signup /> },
   { path: "/admin/register", element: <AdminRegister /> },
+  { path: "/", element: <Main /> },
 ]);
 
 const rootElement = document.getElementById("root");

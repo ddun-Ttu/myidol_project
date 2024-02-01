@@ -20,6 +20,7 @@ import {
   P2,
   Padding,
 } from "./SignupComponentStyle";
+
 import logo from "../../assets/Icons/MainLogo.svg";
 
 const SignupComponent = () => {
