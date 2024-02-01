@@ -6,7 +6,11 @@ export const Nav = styled.div`
   height: 80px;
   margin: ;
   z-index: 99;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
+
+  position: absolute;
+  top: 0;
+  left: 0;
 `;
 
 export const NavUl = styled.ul`
