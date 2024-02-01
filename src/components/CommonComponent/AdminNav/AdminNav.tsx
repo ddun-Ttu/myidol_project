@@ -26,7 +26,7 @@ const AdminNav = () => {
         <EmptyCenter />
 
         <NavLi>
-          <NavA to="/">
+          <NavA to="/admin">
             <NavP>관리자 페이지</NavP>
           </NavA>
         </NavLi>
