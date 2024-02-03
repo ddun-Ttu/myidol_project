@@ -32,6 +32,9 @@ const MainComponent = () => {
             <img src={Img3} alt="Slide 1" />
             <img src={Img1} alt="Slide 1" />
             <img src={Img2} alt="Slide 1" />
+            <img src={Img3} alt="Slide 1" />
+            <img src={Img1} alt="Slide 1" />
+            <img src={Img2} alt="Slide 1" />
           </Slider>
         </div>
       </BannerDiv>
