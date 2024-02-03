@@ -1,5 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
+import {
+  collection,
+  CollectionReference,
+  DocumentData,
+  getDocs,
+  query,
+} from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 
 import {
   Button,
@@ -16,6 +24,21 @@ import {
 } from "./AdminComponentStyle";
 
 const AdminMain = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const q = query(collection(db, "product"));
+      const querySnapshot = await getDocs(q);
+      const initialTodos: any[] = [];
+
+      querySnapshot.forEach((doc) => {
+        initialTodos.push({ id: doc.id, ...doc.data() });
+      });
+      console.log(initialTodos);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <AdminNav />
