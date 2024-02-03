@@ -28,12 +28,12 @@ const AdminMain = () => {
     const fetchData = async () => {
       const q = query(collection(db, "product"));
       const querySnapshot = await getDocs(q);
-      const initialTodos: any[] = [];
+      const initialProduct: any[] = [];
 
       querySnapshot.forEach((doc) => {
-        initialTodos.push({ id: doc.id, ...doc.data() });
+        initialProduct.push({ id: doc.id, ...doc.data() });
       });
-      console.log(initialTodos);
+      console.log(initialProduct[0]);
     };
 
     fetchData();
@@ -57,26 +57,18 @@ const AdminMain = () => {
             </tr>
           </Thead>
           <Tbody>
-            <Tr>
-              <Td>에스파</Td>
-              <Td>1ST CONCERT `SYNK: HYPER LINE` PHOTOBOOK</Td>
-              <Td>
-                <Button>수정</Button>
-              </Td>
-              <Td>
-                <Button>삭제</Button>
-              </Td>
-            </Tr>
-            <Tr>
-              <Td>에스파</Td>
-              <Td>1ST CONCERT `SYNK: HYPER LINE` PHOTOBOOK</Td>
-              <Td>
-                <Button>수정</Button>
-              </Td>
-              <Td>
-                <Button>삭제</Button>
-              </Td>
-            </Tr>
+            {/* {initialTodos.map((item) => (
+              <Tr key={item.id}>
+                <Td>{item.IdolName}</Td>
+                <Td>{item.Album}</Td>
+                <Td>
+                  <Button>수정</Button>
+                </Td>
+                <Td>
+                  <Button>삭제</Button>
+                </Td>
+              </Tr>
+            ))} */}
           </Tbody>
         </Table>
       </TableDiv>
