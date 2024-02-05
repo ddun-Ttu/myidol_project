@@ -19,7 +19,6 @@ import {
   Tr,
   AddButton,
   Tbody,
-  P2,
   LinkBtn,
 } from "./AdminComponentStyle";
 
