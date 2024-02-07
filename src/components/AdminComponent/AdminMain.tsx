@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
 import {
   collection,
@@ -23,16 +23,24 @@ import {
 } from "./AdminComponentStyle";
 
 const AdminMain = () => {
+  const [initialProduct, setInitialProduct] = useState<any[]>([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const q = query(collection(db, "product"));
       const querySnapshot = await getDocs(q);
-      const initialProduct: any[] = [];
+      const products: any[] = [];
 
       querySnapshot.forEach((doc) => {
-        initialProduct.push({ id: doc.id, ...doc.data() });
+        products.push({ id: doc.id, ...doc.data() });
       });
-      console.log(initialProduct[0]);
+
+      setInitialProduct(products);
+
+      const a = initialProduct.map((item) => item.Album
+      );
+      console.log(a);
+      console.log(initialProduct);
     };
 
     fetchData();
@@ -51,21 +59,29 @@ const AdminMain = () => {
             <tr>
               <Th>아이돌</Th>
               <Th>앨범명</Th>
+              <Th>가격</Th>
+              <Th>수량</Th>
               <Th></Th>
               <Th></Th>
             </tr>
           </Thead>
+
           <Tbody>
-            <Tr>
-              <Td></Td>
-              <Td></Td>
-              <Td>
-                <Button>수정</Button>
-              </Td>
-              <Td>
-                <Button>삭제</Button>
-              </Td>
-            </Tr>
+            {initialProduct.map((item) => (
+              <Tr key={item.id}>
+                <Td>{item.IdolName}</Td>
+                <Td>{item.Album}</Td>
+                <Td>{item.Price}</Td>
+                <Td>{item.Count}</Td>
+                <Td>
+                  <Button>수정</Button>
+                </Td>
+                <Td>
+                  <Button>삭제</Button>
+                </Td>
+              </Tr>
+            ))}
+            
           </Tbody>
         </Table>
       </TableDiv>
