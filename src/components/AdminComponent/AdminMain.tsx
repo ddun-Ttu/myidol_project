@@ -56,18 +56,16 @@ const AdminMain = () => {
             </tr>
           </Thead>
           <Tbody>
-            {/* {initialTodos.map((item) => (
-              <Tr key={item.id}>
-                <Td>{item.IdolName}</Td>
-                <Td>{item.Album}</Td>
-                <Td>
-                  <Button>수정</Button>
-                </Td>
-                <Td>
-                  <Button>삭제</Button>
-                </Td>
-              </Tr>
-            ))} */}
+            <Tr>
+              <Td></Td>
+              <Td></Td>
+              <Td>
+                <Button>수정</Button>
+              </Td>
+              <Td>
+                <Button>삭제</Button>
+              </Td>
+            </Tr>
           </Tbody>
         </Table>
       </TableDiv>
