@@ -18,43 +18,43 @@ import {
 import { ContainerWhite } from "../../styles/Container";
 
 const AdminRegister = () => {
-  const [todos, setTodos] = useState([
+  const [register, setRegister] = useState([
     {
-      text: "I'VE MINE 미니 1집",
+      Album: "I'VE MINE 미니 1집",
       IdolName: "아이브",
       Price: 23000,
       Count: 10,
     },
   ]);
 
-  const [text, setText] = useState("");
+  const [Album, setAlbum] = useState("");
 
   const onChange = (event: any) => {
     const {
       target: { name, value },
     } = event;
-    if (name === "text") {
-      setText(value);
+    if (name === "Album") {
+      setAlbum(value);
     }
   };
 
   const addTodo = async (event: any) => {
     event.preventDefault();
     const newTodo = {
-      text: text,
+      Album: Album,
       IdolName: "",
       Price: 0,
       Count: 0,
       isDone: false,
     };
-    setTodos((prev) => {
+    setRegister((prev) => {
       return [...prev, newTodo];
     });
-    setText("");
+    setAlbum("");
 
-    // Firestore에서 'todos' 컬렉션에 대한 참조 생성하기
-    const collectionRef = collection(db, "todos");
-    // 'todos' 컬렉션에 newTodo 문서를 추가합니다.
+    // Firestore에서 'register' 컬렉션에 대한 참조 생성하기
+    const collectionRef = collection(db, "product");
+    // 'register' 컬렉션에 newTodo 문서를 추가합니다.
     await addDoc(collectionRef, newTodo);
   };
 
@@ -69,14 +69,14 @@ const AdminRegister = () => {
           <Form>
             {/* <div>
               <P1>아이돌</P1>
-              <Input placeholder="아이브" type="text"></Input>
+              <Input placeholder="아이브" type="Album"></Input>
             </div> */}
             <div>
               <P1>앨범명</P1>
               <Input
                 type="text"
-                value={text}
-                name="text"
+                value={Album}
+                name="Album"
                 onChange={onChange}
                 required
                 placeholder="I`VE MINE [미니 1집"
