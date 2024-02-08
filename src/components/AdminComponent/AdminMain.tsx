@@ -46,14 +46,14 @@ const AdminMain = () => {
     fetchData();
   }, []);
 
-  const deleteTodo = async (event: any) => {
-    const RegisterRef = doc(db, "product", event.target.id);
+  const deleteTodo = async (id: string) => {
+    const RegisterRef = doc(db, "product", id);
 
     await deleteDoc(RegisterRef);
-    console.log("아이디값", event.target.id);
+    console.log("아이디값", id);
 
     setInitialProduct((prev) => {
-      return prev.filter((element) => element.id !== event.target.id);
+      return prev.filter((element) => element.id !== id);
     });
   };
 
@@ -88,7 +88,7 @@ const AdminMain = () => {
                   <Button>수정</Button>
                 </Td>
                 <Td>
-                  <Button onClick={deleteTodo}>삭제</Button>
+                  <Button onClick={() => deleteTodo(item.id)}>삭제</Button>
                 </Td>
               </Tr>
             ))}
