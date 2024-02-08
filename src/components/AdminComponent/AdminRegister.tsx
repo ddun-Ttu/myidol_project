@@ -1,6 +1,7 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "src/firebase/firebase";
 
 import {
   Form,
@@ -16,7 +17,46 @@ import {
 } from "./AdminComponentStyle";
 import { ContainerWhite } from "../../styles/Container";
 
+
+
 const AdminRegister = () => {
+  const [register, setRegister] = useState([
+    {
+      Album: "I'VE MINE 미니 1집",
+      IdolName: "아이브",
+      Price: 23000,
+      Count: 10,
+      id: 1,
+    },
+  ]);
+
+  const [album, setAlbum] = useState("");
+
+  const onChange = (event: any) => {
+    const {
+      target: { name, value },
+    } = event;
+    if (name === "album") {
+      setAlbum(value);
+    }
+  };
+
+  const AddRegister = asyns (event: any) => {
+    event.preventDefault();
+    const newRegister = {
+      Album: Text,
+      IdolName: Text,
+      Price: Number,
+      Count: Number,
+    };
+
+    setRegister((prev) => {
+      reture [...register,
+        newRegister,];
+    });
+    setAlbum("");
+    await addDoc(collection(db,"Product"), newRegister);
+  };
   return (
     <>
       <AdminNav />
@@ -32,7 +72,13 @@ const AdminRegister = () => {
             </div>
             <div>
               <P1>앨범명</P1>
-              <Input placeholder="I`VE MINE [미니 1집" type="text"></Input>
+              <Input
+                type="text"
+                value={album}
+                name="album"
+                onChange={onchange}
+                placeholder="I`VE MINE [미니 1집"
+              ></Input>
             </div>
             <div>
               <P1>가격</P1>
