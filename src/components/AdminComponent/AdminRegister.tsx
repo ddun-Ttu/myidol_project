@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
-import { addDoc, collection} from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 
 import {
@@ -28,6 +28,9 @@ const AdminRegister = () => {
   ]);
 
   const [Album, setAlbum] = useState("");
+  const [IdolName, setIdolName] = useState("");
+  const [Price, setPrice] = useState(0);
+  const [Count, setCount] = useState(0);
 
   const onChange = (event: any) => {
     const {
@@ -36,21 +39,32 @@ const AdminRegister = () => {
     if (name === "Album") {
       setAlbum(value);
     }
+    if (name === "IdolName") {
+      setIdolName(value);
+    }
+    if (name === "Price") {
+      setPrice(value);
+    }
+    if (name === "Count") {
+      setCount(value);
+    }
   };
 
   const addTodo = async (event: any) => {
     event.preventDefault();
     const newTodo = {
       Album: Album,
-      IdolName: "",
-      Price: 0,
-      Count: 0,
-      isDone: false,
+      IdolName: IdolName,
+      Price: Price,
+      Count: Count,
     };
     setRegister((prev) => {
       return [...prev, newTodo];
     });
     setAlbum("");
+    setIdolName("");
+    setPrice(0);
+    setCount(0);
 
     // Firestore에서 'register' 컬렉션에 대한 참조 생성하기
     const collectionRef = collection(db, "product");
@@ -67,10 +81,17 @@ const AdminRegister = () => {
         </div>
         <div>
           <Form>
-            {/* <div>
+            <div>
               <P1>아이돌</P1>
-              <Input placeholder="아이브" type="Album"></Input>
-            </div> */}
+              <Input
+                type="text"
+                value={IdolName}
+                name="IdolName"
+                onChange={onChange}
+                required
+                placeholder="아이브"
+              ></Input>
+            </div>
             <div>
               <P1>앨범명</P1>
               <Input
@@ -82,15 +103,29 @@ const AdminRegister = () => {
                 placeholder="I`VE MINE [미니 1집"
               ></Input>
             </div>
-            {/* <div>
+            <div>
               <P1>가격</P1>
-              <Input placeholder="12,000" type="number"></Input>
+              <Input
+                value={Price}
+                name="Price"
+                onChange={onChange}
+                required
+                placeholder="12,000"
+                type="number"
+              ></Input>
             </div>
             <div>
               <P1>수량</P1>
-              <Input placeholder="10" type="number"></Input>
+              <Input
+                value={Count}
+                name="Count"
+                onChange={onChange}
+                required
+                placeholder="10"
+                type="number"
+              ></Input>
             </div>
-            <div>
+            {/* <div>
               <P1>카테고리</P1>
               <Select name="items">
                 <Option value="1">전체</Option>
