@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "src/firebase/firebase";
+import { addDoc, collection} from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 
 import {
   Form,
@@ -17,46 +17,47 @@ import {
 } from "./AdminComponentStyle";
 import { ContainerWhite } from "../../styles/Container";
 
-
-
 const AdminRegister = () => {
-  const [register, setRegister] = useState([
+  const [todos, setTodos] = useState([
     {
-      Album: "I'VE MINE 미니 1집",
+      text: "I'VE MINE 미니 1집",
       IdolName: "아이브",
       Price: 23000,
       Count: 10,
-      id: 1,
     },
   ]);
 
-  const [album, setAlbum] = useState("");
+  const [text, setText] = useState("");
 
   const onChange = (event: any) => {
     const {
       target: { name, value },
     } = event;
-    if (name === "album") {
-      setAlbum(value);
+    if (name === "text") {
+      setText(value);
     }
   };
 
-  const AddRegister = asyns (event: any) => {
+  const addTodo = async (event: any) => {
     event.preventDefault();
-    const newRegister = {
-      Album: Text,
-      IdolName: Text,
-      Price: Number,
-      Count: Number,
+    const newTodo = {
+      text: text,
+      IdolName: "",
+      Price: 0,
+      Count: 0,
+      isDone: false,
     };
-
-    setRegister((prev) => {
-      reture [...register,
-        newRegister,];
+    setTodos((prev) => {
+      return [...prev, newTodo];
     });
-    setAlbum("");
-    await addDoc(collection(db,"Product"), newRegister);
+    setText("");
+
+    // Firestore에서 'todos' 컬렉션에 대한 참조 생성하기
+    const collectionRef = collection(db, "todos");
+    // 'todos' 컬렉션에 newTodo 문서를 추가합니다.
+    await addDoc(collectionRef, newTodo);
   };
+
   return (
     <>
       <AdminNav />
@@ -66,21 +67,22 @@ const AdminRegister = () => {
         </div>
         <div>
           <Form>
-            <div>
+            {/* <div>
               <P1>아이돌</P1>
               <Input placeholder="아이브" type="text"></Input>
-            </div>
+            </div> */}
             <div>
               <P1>앨범명</P1>
               <Input
                 type="text"
-                value={album}
-                name="album"
-                onChange={onchange}
+                value={text}
+                name="text"
+                onChange={onChange}
+                required
                 placeholder="I`VE MINE [미니 1집"
               ></Input>
             </div>
-            <div>
+            {/* <div>
               <P1>가격</P1>
               <Input placeholder="12,000" type="number"></Input>
             </div>
@@ -103,9 +105,9 @@ const AdminRegister = () => {
             <div>
               <P1>상품설명</P1>
               <TextArea placeholder="상품설명"></TextArea>
-            </div>
+            </div> */}
             <div>
-              <RegisterButton>등록하기</RegisterButton>
+              <RegisterButton onClick={addTodo}>등록하기</RegisterButton>
             </div>
           </Form>
         </div>
