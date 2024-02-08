@@ -96,7 +96,7 @@ const AdminRegister = () => {
                 name="IdolName"
                 onChange={onChange}
                 required
-                placeholder="아이브"
+                placeholder="아이돌명"
               ></Input>
             </div>
             <div>
@@ -107,7 +107,7 @@ const AdminRegister = () => {
                 name="Album"
                 onChange={onChange}
                 required
-                placeholder="I`VE MINE [미니 1집"
+                placeholder="앨범명"
               ></Input>
             </div>
             <div>
@@ -117,7 +117,7 @@ const AdminRegister = () => {
                 name="Price"
                 onChange={onChange}
                 required
-                placeholder="12,000"
+                placeholder="가격"
                 type="number"
               ></Input>
             </div>
@@ -128,7 +128,7 @@ const AdminRegister = () => {
                 name="Count"
                 onChange={onChange}
                 required
-                placeholder="10"
+                placeholder="수량"
                 type="number"
               ></Input>
             </div>
