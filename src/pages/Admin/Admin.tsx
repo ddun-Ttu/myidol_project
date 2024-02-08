@@ -1,10 +1,15 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase/firebase";
+import { useNavigate } from "react-router-dom";
+import AdminMain from "../../components/AdminComponent/AdminMain";
+import AdminNav from "../../components/CommonComponent/AdminNav/AdminNav";
+import AdminRegister from "../../components/AdminComponent/AdminRegister";
 
 const Admin = () => {
   return (
     <>
-    <h1>관리자 페이지입니다.</h1>
+      <AdminMain />
     </>
   );
 };
