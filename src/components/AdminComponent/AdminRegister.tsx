@@ -24,6 +24,7 @@ const AdminRegister = () => {
       IdolName: "아이브",
       Price: 23000,
       Count: 10,
+      Details: "아이브 미니 앨범",
     },
   ]);
 
@@ -31,6 +32,7 @@ const AdminRegister = () => {
   const [IdolName, setIdolName] = useState("");
   const [Price, setPrice] = useState(0);
   const [Count, setCount] = useState(0);
+  const [Details, setDetails] = useState("");
 
   const onChange = (event: any) => {
     const {
@@ -48,6 +50,9 @@ const AdminRegister = () => {
     if (name === "Count") {
       setCount(value);
     }
+    if (name === "Details") {
+      setDetails(value);
+    }
   };
 
   const addTodo = async (event: any) => {
@@ -57,6 +62,7 @@ const AdminRegister = () => {
       IdolName: IdolName,
       Price: Price,
       Count: Count,
+      Details: Details,
     };
     setRegister((prev) => {
       return [...prev, newTodo];
@@ -65,6 +71,7 @@ const AdminRegister = () => {
     setIdolName("");
     setPrice(0);
     setCount(0);
+    setDetails("");
 
     // Firestore에서 'register' 컬렉션에 대한 참조 생성하기
     const collectionRef = collection(db, "product");
@@ -136,11 +143,17 @@ const AdminRegister = () => {
             <div>
               <P1>사진</P1>
               <Input type="file"></Input>
-            </div>
+            </div> */}
             <div>
               <P1>상품설명</P1>
-              <TextArea placeholder="상품설명"></TextArea>
-            </div> */}
+              <TextArea
+                value={Details}
+                name="Details"
+                onChange={onChange}
+                required
+                placeholder="상품설명"
+              ></TextArea>
+            </div>
             <div>
               <RegisterButton onClick={addTodo}>등록하기</RegisterButton>
             </div>

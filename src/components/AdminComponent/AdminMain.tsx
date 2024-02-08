@@ -6,6 +6,8 @@ import {
   DocumentData,
   getDocs,
   query,
+  deleteDoc,
+  doc,
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 
@@ -37,14 +39,23 @@ const AdminMain = () => {
 
       setInitialProduct(products);
 
-      const a = initialProduct.map((item) => item.Album
-      );
-      console.log(a);
-      console.log(initialProduct);
+      // const a = initialProduct.map((item) => item.id);
+      // console.log(a);
     };
 
     fetchData();
   }, []);
+
+  const deleteTodo = async (event: any) => {
+    const RegisterRef = doc(db, "product", event.target.id);
+
+    await deleteDoc(RegisterRef);
+    console.log("아이디값", event.target.id);
+
+    setInitialProduct((prev) => {
+      return prev.filter((element) => element.id !== event.target.id);
+    });
+  };
 
   return (
     <>
@@ -77,11 +88,10 @@ const AdminMain = () => {
                   <Button>수정</Button>
                 </Td>
                 <Td>
-                  <Button>삭제</Button>
+                  <Button onClick={deleteTodo}>삭제</Button>
                 </Td>
               </Tr>
             ))}
-            
           </Tbody>
         </Table>
       </TableDiv>
