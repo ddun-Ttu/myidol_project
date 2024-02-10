@@ -53,6 +53,7 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   font-size: 16px;
+  font-weight: 700;
 `;
 export const LinkBtn = styled(Link)``;
 
