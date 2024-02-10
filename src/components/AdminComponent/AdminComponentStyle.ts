@@ -41,6 +41,7 @@ export const Th = styled.th`
 export const Td = styled.td`
   text-align: center;
   padding: 30px;
+  font-size: 16px;
 `;
 export const Button = styled.button`
   display: flex;
