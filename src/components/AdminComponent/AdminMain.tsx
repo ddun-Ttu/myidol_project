@@ -10,6 +10,8 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import {
   Button,
@@ -26,6 +28,10 @@ import {
 
 const AdminMain = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
+  const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +52,7 @@ const AdminMain = () => {
     fetchData();
   }, []);
 
-  const deleteProduct = async (id: string) => {
+  const HandleDeleteClick = async (id: string) => {
     const RegisterRef = doc(db, "product", id);
 
     await deleteDoc(RegisterRef);
@@ -57,7 +63,26 @@ const AdminMain = () => {
     });
   };
 
-  
+  const handleEditClick = (id: string) => {
+    setSelectedProductId(id);
+    navigate("/admin/register", { state: { id } }); // 수정 페이지로 이동
+  };
+
+  useEffect(() => {
+    if (pathname === "/admin/register" && selectedProductId) {
+      // 상품 정보 불러오기
+      const product = initialProduct.find(
+        (product) => product.id === selectedProductId
+      );
+      if (!product) {
+        // 상품 정보가 없으면 404 페이지로 이동
+        return;
+      }
+
+      // ... 상품 정보를 이용하여 수정 페이지 컴포넌트 렌더링
+    }
+  }, [pathname, selectedProductId]);
+
   return (
     <>
       <AdminNav />
@@ -86,10 +111,12 @@ const AdminMain = () => {
                 <Td>{item.Price}</Td>
                 <Td>{item.Count}</Td>
                 <Td>
-                  <Button>수정</Button>
+                  <Button onClick={() => handleEditClick(item.id)}>수정</Button>
                 </Td>
                 <Td>
-                  <Button onClick={() => deleteProduct(item.id)}>삭제</Button>
+                  <Button onClick={() => HandleDeleteClick(item.id)}>
+                    삭제
+                  </Button>
                 </Td>
               </Tr>
             ))}
