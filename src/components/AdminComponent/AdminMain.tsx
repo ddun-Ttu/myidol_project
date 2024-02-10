@@ -65,24 +65,28 @@ const AdminMain = () => {
 
   const handleEditClick = (id: string) => {
     setSelectedProductId(id);
-    navigate("/admin/register", { state: { id } }); // 수정 페이지로 이동
+    navigate(`/admin/edit/${id}`, { state: { id } }); // 수정 페이지로 이동
   };
 
   useEffect(() => {
-    if (pathname === "/admin/register" && selectedProductId) {
-      // 상품 정보 불러오기
-      const product = initialProduct.find(
-        (product) => product.id === selectedProductId
-      );
-      if (!product) {
-        // 상품 정보가 없으면 404 페이지로 이동
-        return;
-      }
+    if (pathname.startsWith("/admin/edit/") && selectedProductId) {
+        const productIdFromPath = pathname.substring("/admin/edit/".length);
+        if (productIdFromPath !== selectedProductId) {
+            return; // This is not the correct product ID, do nothing
+        }
 
-      // ... 상품 정보를 이용하여 수정 페이지 컴포넌트 렌더링
+        // Load product information
+        const product = initialProduct.find(
+            (product) => product.id === selectedProductId
+        );
+        if (!product) {
+            // If there is no product information, go to page 404 or handle it appropriately
+            return;
+        }
+
+        // ... Render the edit page component using product information
     }
-  }, [pathname, selectedProductId]);
-
+}, [pathname, selectedProductId]);
   return (
     <>
       <AdminNav />
