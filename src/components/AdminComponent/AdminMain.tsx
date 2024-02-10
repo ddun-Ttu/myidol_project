@@ -46,7 +46,7 @@ const AdminMain = () => {
     fetchData();
   }, []);
 
-  const deleteTodo = async (id: string) => {
+  const deleteProduct = async (id: string) => {
     const RegisterRef = doc(db, "product", id);
 
     await deleteDoc(RegisterRef);
@@ -57,6 +57,7 @@ const AdminMain = () => {
     });
   };
 
+  
   return (
     <>
       <AdminNav />
@@ -88,7 +89,7 @@ const AdminMain = () => {
                   <Button>수정</Button>
                 </Td>
                 <Td>
-                  <Button onClick={() => deleteTodo(item.id)}>삭제</Button>
+                  <Button onClick={() => deleteProduct(item.id)}>삭제</Button>
                 </Td>
               </Tr>
             ))}
