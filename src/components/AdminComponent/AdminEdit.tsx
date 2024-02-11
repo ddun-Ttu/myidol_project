@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
-import { useLocation } from "react-router-dom";
-import { addDoc, collection } from "firebase/firestore";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  addDoc,
+  collection,
+  doc,
+  DocumentData,
+  getDocs,
+  query,
+  updateDoc,
+} from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 
 import {
@@ -19,6 +27,9 @@ import {
 import { ContainerWhite } from "../../styles/Container";
 
 const AdminEdit = () => {
+  const { productId } = useParams<{ productId: any }>();
+  const navigate = useNavigate();
+  const [initialProduct, setInitialProduct] = useState<any[]>([]);
   const [register, setRegister] = useState([
     {
       Album: "앨범명",
@@ -29,31 +40,56 @@ const AdminEdit = () => {
     },
   ]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const q = query(collection(db, "product"));
+      const querySnapshot = await getDocs(q);
+      const products: any[] = [];
+
+      querySnapshot.forEach((doc) => {
+        products.push({ id: doc.id, ...doc.data() });
+      });
+
+      setInitialProduct(products);
+      console.log(initialProduct);
+
+      const selectedProduct = products.find(
+        (product) => product.id === productId
+      );
+
+      console.log(querySnapshot);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const productRef = doc(db, "product", productId);
+
+    try {
+      await updateDoc(productRef, productId);
+      console.log("Product updated successfully!");
+    } catch (error) {
+      console.error("Error updating product:", error);
+    }
+  };
+
   const [Album, setAlbum] = useState("");
   const [IdolName, setIdolName] = useState("");
   const [Price, setPrice] = useState(0);
   const [Count, setCount] = useState(0);
   const [Details, setDetails] = useState("");
 
-  const onChange = (event: any) => {
-    const {
-      target: { name, value },
-    } = event;
-    if (name === "Album") {
-      setAlbum(value);
-    }
-    if (name === "IdolName") {
-      setIdolName(value);
-    }
-    if (name === "Price") {
-      setPrice(value);
-    }
-    if (name === "Count") {
-      setCount(value);
-    }
-    if (name === "Details") {
-      setDetails(value);
-    }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setRegister((prevProduct) => ({
+      ...prevProduct,
+      [name]: value,
+    }));
   };
 
   const EditProduct = async (event: any) => {
@@ -95,7 +131,7 @@ const AdminEdit = () => {
                 type="text"
                 value={IdolName}
                 name="IdolName"
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 placeholder="아이돌명"
               ></Input>
@@ -106,7 +142,7 @@ const AdminEdit = () => {
                 type="text"
                 value={Album}
                 name="Album"
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 placeholder="앨범명"
               ></Input>
@@ -116,7 +152,7 @@ const AdminEdit = () => {
               <Input
                 value={Price}
                 name="Price"
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 placeholder="가격"
                 type="number"
@@ -127,7 +163,7 @@ const AdminEdit = () => {
               <Input
                 value={Count}
                 name="Count"
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 placeholder="수량"
                 type="number"
@@ -150,13 +186,15 @@ const AdminEdit = () => {
               <TextArea
                 value={Details}
                 name="Details"
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 placeholder="상품설명"
               ></TextArea>
             </div>
             <div>
-              <RegisterButton onClick={EditProduct}>수정하기</RegisterButton>
+              <RegisterButton onClick={handleEditSubmit}>
+                수정하기
+              </RegisterButton>
             </div>
           </Form>
         </div>
