@@ -55,9 +55,9 @@ const AdminRegister = () => {
     }
   };
 
-  const addTodo = async (event: any) => {
+  const addProduct = async (event: any) => {
     event.preventDefault();
-    const newTodo = {
+    const newProduct = {
       Album: Album,
       IdolName: IdolName,
       Price: Price,
@@ -65,7 +65,7 @@ const AdminRegister = () => {
       Details: Details,
     };
     setRegister((prev) => {
-      return [...prev, newTodo];
+      return [...prev, newProduct];
     });
     setAlbum("");
     setIdolName("");
@@ -75,8 +75,8 @@ const AdminRegister = () => {
 
     // Firestore에서 'register' 컬렉션에 대한 참조 생성하기
     const collectionRef = collection(db, "product");
-    // 'register' 컬렉션에 newTodo 문서를 추가합니다.
-    await addDoc(collectionRef, newTodo);
+    // 'register' 컬렉션에 newProduct 문서를 추가합니다.
+    await addDoc(collectionRef, newProduct);
   };
 
   return (
@@ -155,7 +155,7 @@ const AdminRegister = () => {
               ></TextArea>
             </div>
             <div>
-              <RegisterButton onClick={addTodo}>등록하기</RegisterButton>
+              <RegisterButton onClick={addProduct}>등록하기</RegisterButton>
             </div>
           </Form>
         </div>
