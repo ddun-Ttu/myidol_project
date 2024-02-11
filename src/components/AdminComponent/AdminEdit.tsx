@@ -21,11 +21,11 @@ import { ContainerWhite } from "../../styles/Container";
 const AdminEdit = () => {
   const [register, setRegister] = useState([
     {
-      Album: "I'VE MINE 미니 1집",
-      IdolName: "아이브",
+      Album: "앨범명",
+      IdolName: "아이돌명",
       Price: 23000,
       Count: 10,
-      Details: "아이브 미니 앨범",
+      Details: "상세 설명",
     },
   ]);
 
