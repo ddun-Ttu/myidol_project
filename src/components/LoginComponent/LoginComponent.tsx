@@ -1,4 +1,4 @@
-import { Container } from "../../styles/Container";
+import { Container, BasicBlack } from "../../styles/Container";
 import { Link } from "react-router-dom";
 import { useState, ChangeEvent, FormEvent } from "react";
 import React from "react";
@@ -16,6 +16,7 @@ import {
   P1,
   P2,
   Padding,
+  LoginContainer,
 } from "./LoginComponentStyle";
 import logo from "../../assets/Icons/MainLogo.svg";
 
@@ -53,47 +54,51 @@ const LoginComponent = () => {
     }
   };
   return (
-    <Container>
-      <div>
-        <Logo src={logo} alt="로고" />
-      </div>
-      <DivLogin1>
-        <div>
-          <H1>환영해요 아이돌즈</H1>
-        </div>
-        <LoginForm>
+    <LoginContainer>
+      <BasicBlack>
+        <Container>
           <div>
-            <LoginInput
-              type="email"
-              value={email}
-              name="email"
-              onChange={onChange}
-              required
-            ></LoginInput>
+            <Logo src={logo} alt="로고" />
           </div>
-          <div>
-            <LoginInput
-              type="password"
-              value={password}
-              name="password"
-              onChange={onChange}
-              required
-            ></LoginInput>
-          </div>
-        </LoginForm>
+          <DivLogin1>
+            <div>
+              <H1>환영해요 아이돌즈</H1>
+            </div>
+            <LoginForm>
+              <div>
+                <LoginInput
+                  type="email"
+                  value={email}
+                  name="email"
+                  onChange={onChange}
+                  required
+                ></LoginInput>
+              </div>
+              <div>
+                <LoginInput
+                  type="password"
+                  value={password}
+                  name="password"
+                  onChange={onChange}
+                  required
+                ></LoginInput>
+              </div>
+            </LoginForm>
 
-        <div>
-          <Button onClick={SignIn}>로그인하기</Button>
-        </div>
-      </DivLogin1>
+            <div>
+              <Button onClick={SignIn}>로그인하기</Button>
+            </div>
+          </DivLogin1>
 
-      <Padding>
-        <P1>아직 회원가입을 안 하셨나요?</P1>
-        <Link to="/signup">
-          <P2>회원가입하기</P2>
-        </Link>
-      </Padding>
-    </Container>
+          <Padding>
+            <P1>아직 회원가입을 안 하셨나요?</P1>
+            <Link to="/signup">
+              <P2>회원가입하기</P2>
+            </Link>
+          </Padding>
+        </Container>
+      </BasicBlack>
+    </LoginContainer>
   );
 };
 
