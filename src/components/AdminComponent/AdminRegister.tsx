@@ -82,13 +82,19 @@ const AdminRegister = () => {
     await handleUpload();
   };
 
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const handleUpload = async () => {
     if (selectedFile) {
-      const imageRef = ref(storage, "folder/file");
+      const imageRef = ref(
+        storage,
+        `${auth.currentUser && auth.currentUser.uid}/${selectedFile.name}`
+      );
       await uploadBytes(imageRef, selectedFile);
-      setSelectedFile(null);
+      // setSelectedFile(null);
+
+      const downloadURL = await getDownloadURL(imageRef);
+      console.log(downloadURL);
     }
   };
 
