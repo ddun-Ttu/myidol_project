@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../firebase/firebase";
+import { auth, db, storage } from "../../firebase/firebase";
 
 import {
   Form,
@@ -16,6 +16,7 @@ import {
   RegisterButton,
 } from "./AdminComponentStyle";
 import { ContainerWhite } from "../../styles/Container";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const AdminRegister = () => {
   const [register, setRegister] = useState([
@@ -77,6 +78,22 @@ const AdminRegister = () => {
     const collectionRef = collection(db, "product");
     // 'register' 컬렉션에 newProduct 문서를 추가합니다.
     await addDoc(collectionRef, newProduct);
+
+    await handleUpload();
+  };
+
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleUpload = async () => {
+    if (selectedFile) {
+      const imageRef = ref(storage, "folder/file");
+      await uploadBytes(imageRef, selectedFile);
+      setSelectedFile(null);
+    }
+  };
+
+  const handleFileSelect = (event: any) => {
+    setSelectedFile(event.target.files[0]);
   };
 
   return (
@@ -139,11 +156,11 @@ const AdminRegister = () => {
                 <Option value="2">여자아이돌</Option>
                 <Option value="3">남자아이돌</Option>
               </Select>
-            </div>
+            </div> */}
             <div>
               <P1>사진</P1>
-              <Input type="file"></Input>
-            </div> */}
+              <Input type="file" onChange={handleFileSelect}></Input>
+            </div>
             <div>
               <P1>상품설명</P1>
               <TextArea
