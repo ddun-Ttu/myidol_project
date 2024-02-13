@@ -24,6 +24,8 @@ const MainComponent = () => {
     slidesToScroll: 1,
   };
 
+
+
   return (
     <>
       <BannerDiv>
@@ -43,6 +45,11 @@ const MainComponent = () => {
             <div>
               <h1>상세페이지</h1>
               <h1>여자아이돌</h1>
+            </div>
+            <div>
+              <div>
+                
+              </div>
             </div>
           </div>
         </Container>
