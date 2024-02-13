@@ -12,7 +12,8 @@ import Img2 from "../../assets/Images/Banner/Main_banner02.svg";
 import Img3 from "../../assets/Images/Banner/Main_banner03.svg";
 
 // css styles
-import { BannerDiv, Div } from "./MainComponentStyle";
+import { BannerDiv } from "./MainComponentStyle";
+import { Container, BasicBlack } from "../../styles/Container";
 
 const MainComponent = () => {
   const settings = {
@@ -24,7 +25,7 @@ const MainComponent = () => {
   };
 
   return (
-    <Div>
+    <>
       <BannerDiv>
         <MainNav />
         <div>
@@ -34,8 +35,19 @@ const MainComponent = () => {
             <img src={Img2} alt="Slide 1" />
           </Slider>
         </div>
+        <div></div>
       </BannerDiv>
-    </Div>
+      <BasicBlack>
+        <Container>
+          <div>
+            <div>
+              <h1>상세페이지</h1>
+              <h1>여자아이돌</h1>
+            </div>
+          </div>
+        </Container>
+      </BasicBlack>
+    </>
   );
 };
 
