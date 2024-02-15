@@ -8,3 +8,86 @@ position: relative;
 export const Div = styled.div`
 background: #000;
 `
+export const Category = styled.div`
+  font-size: 18px;
+  color: white;
+  margin-bottom: 8px;
+`;
+
+export const ItemWrapper = styled.div`
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  grid-column: span 4;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+`;
+
+export const ItemImage = styled.img`
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+`;
+
+export const ItemTitle = styled.div`
+  font-size: 16px;
+  margin-top: 8px;
+`;
+
+export const ItemPrice = styled.div`
+  font-size: 14px;
+  color: #777;
+`;
+
+export const Div2 = styled.div`
+  display: "grid";
+  gridtemplatecolumns: "repeat(4, 1fr)";
+`;
+
+export const items = [
+  {
+    id: 1,
+    title: "NewJeans(뉴스)",
+    image: "https://via.placeholder.com/100x100",
+    price: 12500,
+  },
+  {
+    id: 2,
+    title: "OMG [MESSAGE CARD VER]",
+    image: "https://via.placeholder.com/100x100",
+    price: 12500,
+  },
+  {
+    id: 1,
+    title: "NewJeans(뉴스)",
+    image: "https://via.placeholder.com/100x100",
+    price: 12500,
+  },
+  {
+    id: 2,
+    title: "OMG [MESSAGE CARD VER]",
+    image: "https://via.placeholder.com/100x100",
+    price: 12500,
+  },
+  {
+    id: 1,
+    title: "NewJeans(뉴스)",
+    image: "https://via.placeholder.com/100x100",
+    price: 12500,
+  },
+  {
+    id: 2,
+    title: "OMG [MESSAGE CARD VER]",
+    image: "https://via.placeholder.com/100x100",
+    price: 12500,
+  },
+  // ... more items
+];
