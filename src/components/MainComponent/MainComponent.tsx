@@ -24,8 +24,6 @@ import {
 } from "./MainComponentStyle";
 import { Container, BasicBlack } from "../../styles/Container";
 
-// 스타일
-
 const MainComponent = () => {
   const settings = {
     dots: true,

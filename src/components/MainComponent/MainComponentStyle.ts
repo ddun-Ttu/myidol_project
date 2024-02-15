@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const BannerDiv = styled.div`
-position: relative;
+  position: relative;
 `;
 
 export const Div = styled.div`
-background: #000;
-`
+  background: #000;
+`;
 export const Category = styled.div`
   font-size: 18px;
   color: white;
@@ -15,7 +15,7 @@ export const Category = styled.div`
 `;
 
 export const ItemWrapper = styled.div`
-  width: 300px;
+  width: 30%;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 8px;
@@ -48,8 +48,8 @@ export const ItemPrice = styled.div`
 `;
 
 export const Div2 = styled.div`
-  display: "grid";
-  gridtemplatecolumns: "repeat(4, 1fr)";
+  display: grid;
+  //   grid-template-columns: repeat(4, 1fr);
 `;
 
 export const items = [
