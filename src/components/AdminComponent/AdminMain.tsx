@@ -72,19 +72,14 @@ const AdminMain = () => {
     if (pathname.startsWith("/admin/edit/") && selectedProductId) {
       const productIdFromPath = pathname.substring("/admin/edit/".length);
       if (productIdFromPath !== selectedProductId) {
-        return; // This is not the correct product ID, do nothing
+        return;
       }
-
-      // Load product information
       const product = initialProduct.find(
         (product) => product.id === selectedProductId
       );
       if (!product) {
-        // If there is no product information, go to page 404 or handle it appropriately
         return;
       }
-
-      // ... Render the edit page component using product information
     }
   }, [pathname, selectedProductId]);
   return (

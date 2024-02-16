@@ -15,7 +15,7 @@ export const Category = styled.div`
 `;
 
 export const ItemWrapper = styled.div`
-  width: 30%;
+  //   width: 30%;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 8px;
@@ -24,7 +24,7 @@ export const ItemWrapper = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  grid-column: span 4;
+  grid-column: span 1;
 
   &:hover {
     background-color: #f2f2f2;
@@ -49,7 +49,7 @@ export const ItemPrice = styled.div`
 
 export const Div2 = styled.div`
   display: grid;
-  //   grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 `;
 
 export const items = [
@@ -66,25 +66,25 @@ export const items = [
     price: 12500,
   },
   {
-    id: 1,
+    id: 3,
     title: "NewJeans(뉴스)",
     image: "https://via.placeholder.com/100x100",
     price: 12500,
   },
   {
-    id: 2,
+    id: 4,
     title: "OMG [MESSAGE CARD VER]",
     image: "https://via.placeholder.com/100x100",
     price: 12500,
   },
   {
-    id: 1,
+    id: 5,
     title: "NewJeans(뉴스)",
     image: "https://via.placeholder.com/100x100",
     price: 12500,
   },
   {
-    id: 2,
+    id: 6,
     title: "OMG [MESSAGE CARD VER]",
     image: "https://via.placeholder.com/100x100",
     price: 12500,

@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MainNav from "../CommonComponent/MainNav/MainNav";
 
 // 라이브러리
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import {
+  collection,
+  CollectionReference,
+  DocumentData,
+  getDocs,
+  query,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
 // 배너 이미지
 import Img1 from "../../assets/Images/Banner/Main_banner01.svg";
@@ -23,8 +33,11 @@ import {
   items,
 } from "./MainComponentStyle";
 import { Container, BasicBlack } from "../../styles/Container";
+import { db } from "../../firebase/firebase";
 
 const MainComponent = () => {
+  const [initialProduct, setInitialProduct] = useState<any[]>([]);
+  const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
   const settings = {
     dots: true,
     infinite: true,
@@ -32,6 +45,25 @@ const MainComponent = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const q = query(collection(db, "product"));
+      const querySnapshot = await getDocs(q);
+      const products: any[] = [];
+
+      querySnapshot.forEach((doc) => {
+        products.push({ id: doc.id, ...doc.data() });
+      });
+
+      setInitialProduct(products);
+
+      const a = initialProduct.map((item) => item.id);
+      console.log(initialProduct);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
