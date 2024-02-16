@@ -40,6 +40,7 @@ export const ItemImage = styled.img`
 export const ItemTitle = styled.div`
   font-size: 16px;
   margin-top: 8px;
+  color: #fff;
 `;
 
 export const ItemPrice = styled.div`

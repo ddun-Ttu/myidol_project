@@ -82,11 +82,12 @@ const MainComponent = () => {
         <Container>
           <Category>여자 아이돌</Category>
           <Div2>
-            {items.map((item) => (
+            {initialProduct.map((item) => (
               <ItemWrapper key={item.id}>
                 <ItemImage src={item.image} />
-                <ItemTitle>{item.title}</ItemTitle>
-                <ItemPrice>₩{item.price}</ItemPrice>
+                <ItemTitle>{item.IdolName}</ItemTitle>
+                <ItemTitle>{item.Album}</ItemTitle>
+                <ItemPrice>₩{item.Price}</ItemPrice>
               </ItemWrapper>
             ))}
           </Div2>
