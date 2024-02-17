@@ -32,7 +32,7 @@ import {
   Div2,
 } from "./MainComponentStyle";
 import { Container, BasicBlack } from "../../styles/Container";
-import { db } from "../../firebase/firebase";
+import { db, storage } from "../../firebase/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const MainComponent = () => {
@@ -52,18 +52,30 @@ const MainComponent = () => {
       const querySnapshot = await getDocs(q);
       const products: any[] = [];
 
-      querySnapshot.forEach((doc) => {
-        products.push({ id: doc.id, ...doc.data() });
+      querySnapshot.forEach(async (doc) => {
+        const data = doc.data();
+        const imageURL = await getImageURL(data.ImagePath);
+        products.push({ id: doc.id, ...data, imageURL });
       });
 
       setInitialProduct(products);
-
-      const a = initialProduct.map((item) => item.id);
-      console.log(initialProduct);
+      console.log(initialProduct[0]);
     };
 
     fetchData();
   }, []);
+
+  const getImageURL = async (imagePath: string) => {
+    console.log("Image Path:", imagePath);
+    try {
+      const imageRef = ref(storage, imagePath);
+      const downloadURL = await getDownloadURL(imageRef);
+      return downloadURL;
+    } catch (error) {
+      console.error("Error getting download URL:", error);
+      return "";
+    }
+  };
 
   return (
     <>
@@ -84,7 +96,7 @@ const MainComponent = () => {
           <Div2>
             {initialProduct.map((item) => (
               <ItemWrapper key={item.id}>
-                <ItemImage src={item.image} />
+                <ItemImage src={item.ImagePath} />
                 <ItemTitle>{item.IdolName}</ItemTitle>
                 <ItemTitle>{item.Album}</ItemTitle>
                 <ItemPrice>₩{item.Price}</ItemPrice>

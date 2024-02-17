@@ -27,6 +27,7 @@ const AdminRegister = () => {
       Price: 23000,
       Count: 10,
       Details: "아이브 미니 앨범",
+      ImagePath: "",
     },
   ]);
 
@@ -60,17 +61,34 @@ const AdminRegister = () => {
 
   const addProduct = async (event: any) => {
     event.preventDefault();
+
+    // 이미지 업로드
+    let imageURL = "";
+    if (selectedFile) {
+      const imageRef = ref(
+        storage,
+        `${
+          auth.currentUser && auth.currentUser.uid
+        }/${IdolName}_${Date.now()}_${selectedFile.name}`
+      );
+      await uploadBytes(imageRef, selectedFile);
+
+      imageURL = await getDownloadURL(imageRef);
+    }
+
     const newProduct = {
       Album: Album,
       IdolName: IdolName,
       Price: Price,
       Count: Count,
       Details: Details,
+      ImagePath: imageURL,
     };
 
     setRegister((prev) => {
       return [...prev, newProduct];
     });
+
     setAlbum("");
     setIdolName("");
     setPrice(0);
@@ -96,7 +114,8 @@ const AdminRegister = () => {
       await uploadBytes(imageRef, selectedFile);
 
       const downloadURL: string = await getDownloadURL(imageRef);
-      console.log(downloadURL);
+      // console.log(downloadURL);
+    }
   };
 
   const handleFileSelect = (event: any) => {
