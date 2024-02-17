@@ -30,10 +30,10 @@ import {
   ItemTitle,
   ItemPrice,
   Div2,
-  items,
 } from "./MainComponentStyle";
 import { Container, BasicBlack } from "../../styles/Container";
 import { db } from "../../firebase/firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 const MainComponent = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);

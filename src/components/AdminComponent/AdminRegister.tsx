@@ -18,6 +18,7 @@ import {
 import { ContainerWhite } from "../../styles/Container";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
+// 상품등록 페이지
 const AdminRegister = () => {
   const [register, setRegister] = useState([
     {
@@ -29,6 +30,7 @@ const AdminRegister = () => {
     },
   ]);
 
+  // 상품 Input 기본값 리셋
   const [Album, setAlbum] = useState("");
   const [IdolName, setIdolName] = useState("");
   const [Price, setPrice] = useState(0);
@@ -65,6 +67,7 @@ const AdminRegister = () => {
       Count: Count,
       Details: Details,
     };
+
     setRegister((prev) => {
       return [...prev, newProduct];
     });
@@ -74,9 +77,7 @@ const AdminRegister = () => {
     setCount(0);
     setDetails("");
 
-    // Firestore에서 'register' 컬렉션에 대한 참조 생성하기
     const collectionRef = collection(db, "product");
-    // 'register' 컬렉션에 newProduct 문서를 추가합니다.
     await addDoc(collectionRef, newProduct);
 
     await handleUpload();
@@ -88,13 +89,14 @@ const AdminRegister = () => {
     if (selectedFile) {
       const imageRef = ref(
         storage,
-        `${auth.currentUser && auth.currentUser.uid}/${selectedFile.name}`
+        `${
+          auth.currentUser && auth.currentUser.uid
+        }/${IdolName}_${Date.now()}_${selectedFile.name}`
       );
       await uploadBytes(imageRef, selectedFile);
-      // setSelectedFile(null);
 
-      const downloadURL = await getDownloadURL(imageRef);
-      console.log(downloadURL);
+      const downloadURL: string = await getDownloadURL(imageRef);
+      console.log(downloadURL); // 다운로드 URL을 콘솔에 출력
     }
   };
 
