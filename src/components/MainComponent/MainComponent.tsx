@@ -52,14 +52,13 @@ const MainComponent = () => {
       const querySnapshot = await getDocs(q);
       const products: any[] = [];
 
-      querySnapshot.forEach(async (doc) => {
-        const data = doc.data();
-        const imageURL = await getImageURL(data.ImagePath);
-        products.push({ id: doc.id, ...data, imageURL });
+      querySnapshot.forEach((doc) => {
+        products.push({ id: doc.id, ...doc.data() });
       });
 
       setInitialProduct(products);
-      console.log(initialProduct[0]);
+
+      console.log(initialProduct);
     };
 
     fetchData();
