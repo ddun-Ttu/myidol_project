@@ -51,6 +51,7 @@ export const P1 = styled.p`
 font-size: 16px;
 font-weight: 700;
 color: #fff;
+padding-bottom: 0.8%;
 `
 
 export const P2 = styled.p`

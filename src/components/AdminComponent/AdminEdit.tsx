@@ -1,121 +1,119 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
-import { addDoc, collection } from "firebase/firestore";
-import { auth, db, storage } from "../../firebase/firebase";
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  addDoc,
+  collection,
+  doc,
+  DocumentData,
+  getDocs,
+  query,
+  updateDoc,
+} from "firebase/firestore";
+import { db } from "../../firebase/firebase";
 
 import {
   Form,
   Input,
   H1,
   P1,
+  Button,
+  Select,
+  Option,
   TextArea,
+  Label,
   RegisterButton,
 } from "./AdminComponentStyle";
 import { ContainerWhite } from "../../styles/Container";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
-// 상품등록 페이지
-const AdminRegister = () => {
+const AdminEdit = () => {
+  const { productId } = useParams<{ productId: any }>();
+  const navigate = useNavigate();
+  const [initialProduct, setInitialProduct] = useState<any[]>([]);
   const [register, setRegister] = useState([
     {
-      Album: "I'VE MINE 미니 1집",
-      IdolName: "아이브",
+      Album: "앨범명",
+      IdolName: "아이돌명",
       Price: 23000,
       Count: 10,
-      Details: "아이브 미니 앨범",
-      ImagePath: "",
+      Details: "상세 설명",
     },
   ]);
 
-  // 상품 Input 기본값 리셋
+  useEffect(() => {
+    const fetchData = async () => {
+      const q = query(collection(db, "product"));
+      const querySnapshot = await getDocs(q);
+      const products: any[] = [];
+
+      querySnapshot.forEach((doc) => {
+        products.push({ id: doc.id, ...doc.data() });
+      });
+
+      setInitialProduct(products);
+      console.log(initialProduct);
+
+      const selectedProduct = products.find(
+        (product) => product.id === productId
+      );
+
+      console.log(querySnapshot);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleEditSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const productRef = doc(db, "product", productId);
+
+    try {
+      await updateDoc(productRef, productId);
+      console.log("Product updated successfully!");
+    } catch (error) {
+      console.error("Error updating product:", error);
+    }
+  };
+
   const [Album, setAlbum] = useState("");
   const [IdolName, setIdolName] = useState("");
   const [Price, setPrice] = useState(0);
   const [Count, setCount] = useState(0);
   const [Details, setDetails] = useState("");
 
-  const onChange = (event: any) => {
-    const {
-      target: { name, value },
-    } = event;
-    if (name === "Album") {
-      setAlbum(value);
-    }
-    if (name === "IdolName") {
-      setIdolName(value);
-    }
-    if (name === "Price") {
-      setPrice(value);
-    }
-    if (name === "Count") {
-      setCount(value);
-    }
-    if (name === "Details") {
-      setDetails(value);
-    }
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setRegister((prevProduct) => ({
+      ...prevProduct,
+      [name]: value,
+    }));
   };
 
-  const addProduct = async (event: any) => {
+  const EditProduct = async (event: any) => {
     event.preventDefault();
-
-    // 이미지 업로드
-    let imageURL = "";
-    if (selectedFile) {
-      const imageRef = ref(
-        storage,
-        `${
-          auth.currentUser && auth.currentUser.uid
-        }/${IdolName}_${Date.now()}_${selectedFile.name}`
-      );
-      await uploadBytes(imageRef, selectedFile);
-
-      imageURL = await getDownloadURL(imageRef);
-    }
-
     const newProduct = {
       Album: Album,
       IdolName: IdolName,
       Price: Price,
       Count: Count,
       Details: Details,
-      ImagePath: imageURL,
     };
-
     setRegister((prev) => {
       return [...prev, newProduct];
     });
-
     setAlbum("");
     setIdolName("");
     setPrice(0);
     setCount(0);
     setDetails("");
 
+    // Firestore에서 'register' 컬렉션에 대한 참조 생성하기
     const collectionRef = collection(db, "product");
+    // 'register' 컬렉션에 newProduct 문서를 추가합니다.
     await addDoc(collectionRef, newProduct);
-
-    await handleUpload();
-  };
-
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  const handleUpload = async () => {
-    if (selectedFile) {
-      const imageRef = ref(
-        storage,
-        `${
-          auth.currentUser && auth.currentUser.uid
-        }/${IdolName}_${Date.now()}_${selectedFile.name}`
-      );
-      await uploadBytes(imageRef, selectedFile);
-
-      const downloadURL: string = await getDownloadURL(imageRef);
-      // console.log(downloadURL);
-    }
-  };
-
-  const handleFileSelect = (event: any) => {
-    setSelectedFile(event.target.files[0]);
   };
 
   return (
@@ -133,7 +131,7 @@ const AdminRegister = () => {
                 type="text"
                 value={IdolName}
                 name="IdolName"
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 placeholder="아이돌명"
               ></Input>
@@ -144,7 +142,7 @@ const AdminRegister = () => {
                 type="text"
                 value={Album}
                 name="Album"
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 placeholder="앨범명"
               ></Input>
@@ -154,7 +152,7 @@ const AdminRegister = () => {
               <Input
                 value={Price}
                 name="Price"
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 placeholder="가격"
                 type="number"
@@ -165,7 +163,7 @@ const AdminRegister = () => {
               <Input
                 value={Count}
                 name="Count"
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 placeholder="수량"
                 type="number"
@@ -178,23 +176,25 @@ const AdminRegister = () => {
                 <Option value="2">여자아이돌</Option>
                 <Option value="3">남자아이돌</Option>
               </Select>
-            </div> */}
+            </div>
             <div>
               <P1>사진</P1>
-              <Input type="file" onChange={handleFileSelect}></Input>
-            </div>
+              <Input type="file"></Input>
+            </div> */}
             <div>
               <P1>상품설명</P1>
               <TextArea
                 value={Details}
                 name="Details"
-                onChange={onChange}
+                onChange={handleChange}
                 required
                 placeholder="상품설명"
               ></TextArea>
             </div>
             <div>
-              <RegisterButton onClick={addProduct}>등록하기</RegisterButton>
+              <RegisterButton onClick={handleEditSubmit}>
+                수정하기
+              </RegisterButton>
             </div>
           </Form>
         </div>
@@ -203,4 +203,4 @@ const AdminRegister = () => {
   );
 };
 
-export default AdminRegister;
+export default AdminEdit;

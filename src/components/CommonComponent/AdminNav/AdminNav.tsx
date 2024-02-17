@@ -19,7 +19,7 @@ const AdminNav = () => {
     <Nav>
       <NavUl>
         <NavLi>
-          <NavA to="/login">
+          <NavA to="/">
             <NavLogo src={logo} alt="logo"></NavLogo>
           </NavA>
         </NavLi>

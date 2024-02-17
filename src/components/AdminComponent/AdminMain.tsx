@@ -10,6 +10,8 @@ import {
   doc,
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import {
   Button,
@@ -26,6 +28,10 @@ import {
 
 const AdminMain = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
+  const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -39,14 +45,14 @@ const AdminMain = () => {
 
       setInitialProduct(products);
 
-      // const a = initialProduct.map((item) => item.id);
-      // console.log(a);
+      const a = initialProduct.map((item) => item.id);
+      // console.log(initialProduct);
     };
 
     fetchData();
   }, []);
 
-  const deleteTodo = async (id: string) => {
+  const HandleDeleteClick = async (id: string) => {
     const RegisterRef = doc(db, "product", id);
 
     await deleteDoc(RegisterRef);
@@ -57,6 +63,25 @@ const AdminMain = () => {
     });
   };
 
+  const handleEditClick = (id: string) => {
+    setSelectedProductId(id);
+    navigate(`/admin/edit/${id}`, { state: { id } }); // 수정 페이지로 이동
+  };
+
+  useEffect(() => {
+    if (pathname.startsWith("/admin/edit/") && selectedProductId) {
+      const productIdFromPath = pathname.substring("/admin/edit/".length);
+      if (productIdFromPath !== selectedProductId) {
+        return;
+      }
+      const product = initialProduct.find(
+        (product) => product.id === selectedProductId
+      );
+      if (!product) {
+        return;
+      }
+    }
+  }, [pathname, selectedProductId]);
   return (
     <>
       <AdminNav />
@@ -85,10 +110,12 @@ const AdminMain = () => {
                 <Td>{item.Price}</Td>
                 <Td>{item.Count}</Td>
                 <Td>
-                  <Button>수정</Button>
+                  <Button onClick={() => handleEditClick(item.id)}>수정</Button>
                 </Td>
                 <Td>
-                  <Button onClick={() => deleteTodo(item.id)}>삭제</Button>
+                  <Button onClick={() => HandleDeleteClick(item.id)}>
+                    삭제
+                  </Button>
                 </Td>
               </Tr>
             ))}
