@@ -96,8 +96,7 @@ const AdminRegister = () => {
       await uploadBytes(imageRef, selectedFile);
 
       const downloadURL: string = await getDownloadURL(imageRef);
-      console.log(downloadURL); // 다운로드 URL을 콘솔에 출력
-    }
+      console.log(downloadURL);
   };
 
   const handleFileSelect = (event: any) => {
