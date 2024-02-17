@@ -8,11 +8,7 @@ import {
   Input,
   H1,
   P1,
-  Button,
-  Select,
-  Option,
   TextArea,
-  Label,
   RegisterButton,
 } from "./AdminComponentStyle";
 import { ContainerWhite } from "../../styles/Container";

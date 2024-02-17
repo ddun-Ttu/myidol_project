@@ -87,7 +87,6 @@ const MainComponent = () => {
             <img src={Img2} alt="Slide 1" />
           </Slider>
         </div>
-        <div></div>
       </BannerDiv>
       <BasicBlack>
         <Container>
