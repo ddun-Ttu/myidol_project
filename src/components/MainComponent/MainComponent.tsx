@@ -81,7 +81,7 @@ const MainComponent = () => {
   // 상세페이지 버튼 클릭 이벤트
   const handleDetailsClick = (id: string) => {
     setSelectedProductId(id);
-    navigate(`/products/${id}`, { state: { id } });
+    navigate(`/product/${id}`, { state: { id } });
   };
 
   return (
