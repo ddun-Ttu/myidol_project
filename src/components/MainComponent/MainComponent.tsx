@@ -101,7 +101,7 @@ const MainComponent = () => {
           <Category>여자 아이돌</Category>
           <Div2>
             {initialProduct.map((item) => (
-              <button onClick={() => handleDetailsClick(item.id)}>
+              <button key={item.id} onClick={() => handleDetailsClick(item.id)}>
                 <ItemWrapper key={item.id}>
                   <ItemImage src={item.ImagePath} />
                   <ItemTitle>{item.IdolName}</ItemTitle>

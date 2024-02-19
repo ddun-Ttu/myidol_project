@@ -46,7 +46,7 @@ const LoginComponent = () => {
         password
       );
       console.log("유저 로그인 성공 ", userCredential.user);
-      navigate("/signup");
+      navigate("/");
     } catch (error: any) {
       const errorCode = error.code;
       const errorMessage = error.message;
