@@ -34,9 +34,11 @@ import {
 import { Container, BasicBlack } from "../../styles/Container";
 import { db, storage } from "../../firebase/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MainComponent = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
+  const navigate = useNavigate();
   const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
   const settings = {
     dots: true,
@@ -76,6 +78,12 @@ const MainComponent = () => {
     }
   };
 
+  // 상세페이지 버튼 클릭 이벤트
+  const handleDetailsClick = (id: string) => {
+    setSelectedProductId(id);
+    navigate(`/products/${id}`, { state: { id } });
+  };
+
   return (
     <>
       <BannerDiv>
@@ -93,12 +101,14 @@ const MainComponent = () => {
           <Category>여자 아이돌</Category>
           <Div2>
             {initialProduct.map((item) => (
-              <ItemWrapper key={item.id}>
-                <ItemImage src={item.ImagePath} />
-                <ItemTitle>{item.IdolName}</ItemTitle>
-                <ItemTitle>{item.Album}</ItemTitle>
-                <ItemPrice>₩{item.Price}</ItemPrice>
-              </ItemWrapper>
+              <button onClick={() => handleDetailsClick(item.id)}>
+                <ItemWrapper key={item.id}>
+                  <ItemImage src={item.ImagePath} />
+                  <ItemTitle>{item.IdolName}</ItemTitle>
+                  <ItemTitle>{item.Album}</ItemTitle>
+                  <ItemPrice>₩{item.Price}</ItemPrice>
+                </ItemWrapper>
+              </button>
             ))}
           </Div2>
         </Container>
