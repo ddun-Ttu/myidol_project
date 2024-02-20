@@ -36,7 +36,7 @@ export const NavP = styled.p`
   color: #fff;
   font-weight: 500;
   margin: 4px 0 0 0;
-  font-size: 20px;
+  font-size: 16px;
 `;
 
 export const NavLogo = styled.img`
