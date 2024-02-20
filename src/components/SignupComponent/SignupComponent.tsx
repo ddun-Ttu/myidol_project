@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { Container, BasicBlack } from "../../styles/Container";
+import { Container, BasicBlack1 } from "../../styles/Container";
 import { Link } from "react-router-dom";
 
 import {
@@ -67,7 +67,7 @@ const SignupComponent = () => {
   };
 
   return (
-    <BasicBlack>
+    <BasicBlack1>
       <Container>
         <div>
           <Logo src={logo} alt="로고" />
@@ -122,7 +122,7 @@ const SignupComponent = () => {
           </Link>
         </Padding>
       </Container>
-    </BasicBlack>
+    </BasicBlack1>
   );
 };
 

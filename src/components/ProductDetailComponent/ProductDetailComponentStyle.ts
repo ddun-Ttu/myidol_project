@@ -110,6 +110,13 @@ export const DetailsExP = styled.p`
   font-size: 30px;
 `;
 
+// 전체 container 스타일
+export const ContainerPro = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+`;
+
 // 수량 버튼
 export const QuantityButton = styled.button`
   display: flex;

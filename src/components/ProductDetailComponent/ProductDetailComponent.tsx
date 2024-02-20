@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { auth, db, storage } from "../../firebase/firebase";
 import MainNav from "../CommonComponent/MainNav/MainNav";
-import { Container, BasicBlack2 } from "../../styles/Container";
+import { BasicBlack2 } from "../../styles/Container";
 
 // 스타일
 import {
@@ -22,6 +22,7 @@ import {
   DetailsExDiv,
   DetailsExP,
   Div,
+  ContainerPro,
 } from "./ProductDetailComponentStyle";
 
 const ProductDetail = () => {
@@ -88,7 +89,7 @@ const ProductDetail = () => {
 
   return (
     <>
-      <Container>
+      <ContainerPro>
         <BasicBlack2>
           <MainNav />
           <Div>
@@ -117,7 +118,7 @@ const ProductDetail = () => {
             </DetailsExDiv>
           </Div>
         </BasicBlack2>
-      </Container>
+      </ContainerPro>
     </>
   );
 };

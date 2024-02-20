@@ -16,33 +16,33 @@ const MainNav = () => {
   return (
     <>
       <Nav>
-      <NavUl>
-        <NavLi>
-          <NavA to="/login">
-            <NavLogo src={logo} alt="logo"></NavLogo>
-          </NavA>
-        </NavLi>
-        <EmptyCenter />
+        <NavUl>
+          <NavLi>
+            <NavA to="/">
+              <NavLogo src={logo} alt="logo"></NavLogo>
+            </NavA>
+          </NavLi>
+          <EmptyCenter />
 
-        <NavLi>
-          <NavA to="/admin">
-            <NavP>장바구니</NavP>
-          </NavA>
-        </NavLi>
+          <NavLi>
+            <NavA to="/admin">
+              <NavP>장바구니</NavP>
+            </NavA>
+          </NavLi>
 
-        <NavLi>
-          <NavA to="/">
-            <NavP>내정보</NavP>
-          </NavA>
-        </NavLi>
+          <NavLi>
+            <NavA to="/">
+              <NavP>내정보</NavP>
+            </NavA>
+          </NavLi>
 
-        <NavLi>
-          <NavA to="/">
-            <NavP>로그아웃</NavP>
-          </NavA>
-        </NavLi>
-      </NavUl>
-    </Nav>
+          <NavLi>
+            <NavA to="/login">
+              <NavP>로그인</NavP>
+            </NavA>
+          </NavLi>
+        </NavUl>
+      </Nav>
     </>
   );
 };

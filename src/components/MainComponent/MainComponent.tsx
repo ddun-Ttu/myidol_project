@@ -31,7 +31,7 @@ import {
   ItemPrice,
   Div2,
 } from "./MainComponentStyle";
-import { Container, BasicBlack } from "../../styles/Container";
+import { Container, BasicBlack2 } from "../../styles/Container";
 import { db, storage } from "../../firebase/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -96,7 +96,7 @@ const MainComponent = () => {
           </Slider>
         </div>
       </BannerDiv>
-      <BasicBlack>
+      <BasicBlack2>
         <Container>
           <Category>여자 아이돌</Category>
           <Div2>
@@ -112,7 +112,7 @@ const MainComponent = () => {
             ))}
           </Div2>
         </Container>
-      </BasicBlack>
+      </BasicBlack2>
     </>
   );
 };
