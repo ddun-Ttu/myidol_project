@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { auth, db, storage } from "../../firebase/firebase";
 import MainNav from "../CommonComponent/MainNav/MainNav";
-import { Container, BasicBlack } from "../../styles/Container";
+import { Container, BasicBlack2 } from "../../styles/Container";
 
 // 스타일
 import {
@@ -19,6 +19,9 @@ import {
   BuyButton,
   CartButton,
   QuantityButton,
+  DetailsExDiv,
+  DetailsExP,
+  Div,
 } from "./ProductDetailComponentStyle";
 
 const ProductDetail = () => {
@@ -86,29 +89,34 @@ const ProductDetail = () => {
   return (
     <>
       <Container>
-        <BasicBlack>
+        <BasicBlack2>
           <MainNav />
-          <ProductImage src={img} />
-          <ProductInfo>
-            <ProductTitle>{album}</ProductTitle>
-            <ProductTitle>{idolname}</ProductTitle>
-            <ProductPrice>{price}원</ProductPrice>
-            <QuantityWrapper>
-              <QuantityLabel>수량</QuantityLabel>
-              <QuantityButton onClick={handleDecrease}>-</QuantityButton>
-              <QuantityInput
-                value={quantity.toString()}
-                onChange={handleQuantityChange}
-              />
-              <QuantityButton onClick={handleIncrease}>+</QuantityButton>
-            </QuantityWrapper>
-            <TotalPrice>총액: {quantity * price}원</TotalPrice>
-          </ProductInfo>
-          <ButtonWrapper>
-            <BuyButton>바로 구매하기</BuyButton>
-            <CartButton>장바구니 담기</CartButton>
-          </ButtonWrapper>
-        </BasicBlack>
+          <Div>
+            <ProductImage src={img} />
+            <ProductInfo>
+              <ProductTitle>{album}</ProductTitle>
+              <ProductTitle>{idolname}</ProductTitle>
+              <ProductPrice>{price}원</ProductPrice>
+              <QuantityWrapper>
+                <QuantityLabel>수량</QuantityLabel>
+                <QuantityButton onClick={handleDecrease}>-</QuantityButton>
+                <QuantityInput
+                  value={quantity.toString()}
+                  onChange={handleQuantityChange}
+                />
+                <QuantityButton onClick={handleIncrease}>+</QuantityButton>
+              </QuantityWrapper>
+              <TotalPrice>총액: {quantity * price}원</TotalPrice>
+            </ProductInfo>
+            <ButtonWrapper>
+              <BuyButton>바로 구매하기</BuyButton>
+              <CartButton>장바구니 담기</CartButton>
+            </ButtonWrapper>
+            <DetailsExDiv>
+              <DetailsExP>{details}</DetailsExP>
+            </DetailsExDiv>
+          </Div>
+        </BasicBlack2>
       </Container>
     </>
   );

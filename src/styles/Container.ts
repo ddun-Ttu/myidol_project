@@ -17,9 +17,14 @@ export const ContainerWhite = styled.div`
   // padding-bottom: 3%; /* 고정 내비게이션과 겹치지 않도록 콘텐츠 하단에 패딩 추가 */
 `;
 
-export const BasicBlack = styled.div`
+export const BasicBlack1 = styled.div`
   width: 100%;
   height: 100vh;
+  background-color: #000;
+`;
+
+export const BasicBlack2 = styled.div`
+  width: 100%;
   background-color: #000;
 `;
 

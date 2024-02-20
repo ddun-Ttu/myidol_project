@@ -1,4 +1,4 @@
-import { Container, BasicBlack } from "../../styles/Container";
+import { Container, BasicBlack1 } from "../../styles/Container";
 import { Link } from "react-router-dom";
 import { useState, ChangeEvent, FormEvent } from "react";
 import React from "react";
@@ -55,7 +55,7 @@ const LoginComponent = () => {
   };
   return (
     <LoginContainer>
-      <BasicBlack>
+      <BasicBlack1>
         <Container>
           <div>
             <Logo src={logo} alt="로고" />
@@ -97,7 +97,7 @@ const LoginComponent = () => {
             </Link>
           </Padding>
         </Container>
-      </BasicBlack>
+      </BasicBlack1>
     </LoginContainer>
   );
 };

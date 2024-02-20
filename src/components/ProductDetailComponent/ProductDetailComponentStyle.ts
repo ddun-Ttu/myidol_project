@@ -98,6 +98,18 @@ export const CartButton = styled.button`
   margin: auto;
 `;
 
+export const Div = styled.div`
+  padding-top: 10%;
+`;
+
+export const DetailsExDiv = styled.div`
+  padding: 10%;
+`;
+export const DetailsExP = styled.p`
+  color: #fff;
+  font-size: 30px;
+`;
+
 // 수량 버튼
 export const QuantityButton = styled.button`
   display: flex;
