@@ -22,30 +22,25 @@ import {
 const ProductDetail = () => {
   const { id } = useParams<{ id: any }>();
   const [product, setProduct] = useState<any | null>(null);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [initialProduct, setInitialProduct] = useState<any[]>([]);
 
   useEffect(() => {
-    const fetcData = async () => {
-      try {
-        const productRef = doc(db, "product", id);
+    const fetchData = async () => {
+      const q = query(collection(db, "product"));
+      const querySnapshot = await getDocs(q);
+      const products: any[] = [];
 
-        const productSnapshot = await getDoc(productRef);
+      querySnapshot.forEach((doc) => {
+        products.push({ id: doc.id, ...doc.data() });
+      });
 
-        if (productSnapshot.exists()) {
-          const productData = productSnapshot.data();
-          setProduct(productData);
+      setInitialProduct(products);
 
-          console.log(productData);
-        } else {
-          console.log("정보가 없습니다");
-        }
-      } catch (error) {
-        console.error("정보를 가져오는 중 오류 발생:", error);
-      }
+      console.log(initialProduct);
     };
 
-    fetcData();
-  }, [id]);
+    fetchData();
+  }, []);
 
   const [quantity, setQuantity] = React.useState(1);
 
@@ -55,6 +50,17 @@ const ProductDetail = () => {
       setQuantity(newQuantity);
     }
   };
+
+  useEffect(() => {
+    if (initialProduct.length > 0) {
+      const selectedProduct = initialProduct.find((p) => p.id === id);
+      setProduct(selectedProduct);
+    }
+  }, [initialProduct, id]);
+
+  if (!product) {
+    return <div>Loading...</div>;
+  }
 
   const album = product.Album;
   const count = product.Count;
