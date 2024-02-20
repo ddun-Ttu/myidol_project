@@ -37,10 +37,10 @@ const ProductDetail = () => {
 
           console.log(productData);
         } else {
-          console.log("No such product!");
+          console.log("정보가 없습니다");
         }
       } catch (error) {
-        console.error("Error fetching product:", error);
+        console.error("정보를 가져오는 중 오류 발생:", error);
       }
     };
 
