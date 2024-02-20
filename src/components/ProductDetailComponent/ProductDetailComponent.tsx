@@ -2,11 +2,12 @@ import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { auth, db, storage } from "../../firebase/firebase";
+import MainNav from "../CommonComponent/MainNav/MainNav";
+import { Container, BasicBlack } from "../../styles/Container";
 
 // 스타일
 import {
   ButtonWrapper,
-  Container,
   ProductImage,
   ProductInfo,
   ProductPrice,
@@ -17,6 +18,7 @@ import {
   TotalPrice,
   BuyButton,
   CartButton,
+  QuantityButton,
 } from "./ProductDetailComponentStyle";
 
 const ProductDetail = () => {
@@ -51,6 +53,18 @@ const ProductDetail = () => {
     }
   };
 
+  const handleIncrease = () => {
+    if (quantity < product.Count) {
+      setQuantity(quantity + 1);
+    }
+  };
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
   useEffect(() => {
     if (initialProduct.length > 0) {
       const selectedProduct = initialProduct.find((p) => p.id === id);
@@ -71,24 +85,31 @@ const ProductDetail = () => {
 
   return (
     <>
-      <ProductImage src={img} />
-      <ProductInfo>
-        <ProductTitle>{album}</ProductTitle>
-        <ProductTitle>{idolname}</ProductTitle>
-        <ProductPrice>{price}</ProductPrice>
-        <QuantityWrapper>
-          <QuantityLabel>수량</QuantityLabel>
-          <QuantityInput
-            value={quantity.toString()}
-            onChange={handleQuantityChange}
-          />
-        </QuantityWrapper>
-        <TotalPrice>총액: {quantity * price}원</TotalPrice>
-      </ProductInfo>
-      <ButtonWrapper>
-        <BuyButton>바로 구매하기</BuyButton>
-        <CartButton>장바구니 담기</CartButton>
-      </ButtonWrapper>
+      <Container>
+        <BasicBlack>
+          <MainNav />
+          <ProductImage src={img} />
+          <ProductInfo>
+            <ProductTitle>{album}</ProductTitle>
+            <ProductTitle>{idolname}</ProductTitle>
+            <ProductPrice>{price}원</ProductPrice>
+            <QuantityWrapper>
+              <QuantityLabel>수량</QuantityLabel>
+              <QuantityButton onClick={handleDecrease}>-</QuantityButton>
+              <QuantityInput
+                value={quantity.toString()}
+                onChange={handleQuantityChange}
+              />
+              <QuantityButton onClick={handleIncrease}>+</QuantityButton>
+            </QuantityWrapper>
+            <TotalPrice>총액: {quantity * price}원</TotalPrice>
+          </ProductInfo>
+          <ButtonWrapper>
+            <BuyButton>바로 구매하기</BuyButton>
+            <CartButton>장바구니 담기</CartButton>
+          </ButtonWrapper>
+        </BasicBlack>
+      </Container>
     </>
   );
 };

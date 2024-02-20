@@ -9,9 +9,12 @@ export const Container = styled.div`
 `;
 
 export const ProductImage = styled.img`
-  width: 300px;
-  height: 300px;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
   object-fit: contain;
+  display: grid;
+  place-items: center;
 `;
 
 export const ProductInfo = styled.div`
@@ -24,11 +27,13 @@ export const ProductInfo = styled.div`
 export const ProductTitle = styled.h1`
   font-size: 24px;
   font-weight: bold;
+  color: #fff;
 `;
 
 export const ProductPrice = styled.h2`
   font-size: 18px;
   margin-top: 10px;
+  color: #fff;
 `;
 
 export const QuantityWrapper = styled.div`
@@ -40,6 +45,7 @@ export const QuantityWrapper = styled.div`
 export const QuantityLabel = styled.span`
   font-size: 16px;
   margin-right: 10px;
+  color: #fff;
 `;
 
 export const QuantityInput = styled.input`
@@ -54,31 +60,50 @@ export const TotalPrice = styled.h2`
   font-size: 20px;
   font-weight: bold;
   margin-top: 20px;
+  color: #fff;
 `;
 
 export const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-  width: 100%;
+  // display: flex;
+  // justify-content: space-between;
+  // margin-top: 20px;
+  // width: 100%;
+  // flexdirection: column;
+  // align-items: center;
+  display: grid;
+  placeitmes: center;
 `;
 
 export const BuyButton = styled.button`
-  width: 150px;
+  width: 20%;
   height: 50px;
-  background-color: #000;
+  border: 2px solid #fff;
+  border-radius: 50px;
   color: #fff;
-  border: none;
   font-size: 16px;
   cursor: pointer;
+  font-weight: bold;
+  margin: 3% auto 1% auto;
 `;
 
 export const CartButton = styled.button`
-  width: 150px;
+  width: 20%;
   height: 50px;
-  background-color: #ddd;
+  background-color: #fff;
+  border-radius: 50px;
+  font-weight: bold;
   color: #000;
-  border: none;
   font-size: 16px;
   cursor: pointer;
+  margin: auto;
+`;
+
+// 수량 버튼
+export const QuantityButton = styled.button`
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  // overflow: hidden;
+  padding: 10%;
+  color: #fff;
 `;

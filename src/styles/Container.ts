@@ -19,8 +19,8 @@ export const ContainerWhite = styled.div`
 
 export const BasicBlack = styled.div`
   width: 100%;
-  height: 100%;
-  background-color: black;
+  height: 100vh;
+  background-color: #000;
 `;
 
 /* [ align-items: center;] 
