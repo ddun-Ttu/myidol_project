@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { Container, BasicBlack1 } from "../../styles/Container";
+import { Container, BasicBlack2 } from "../../styles/Container";
 import { Link } from "react-router-dom";
+import MainNav from "../CommonComponent/MainNav/MainNav";
 
 import {
   createUserWithEmailAndPassword,
@@ -67,7 +68,8 @@ const SignupComponent = () => {
   };
 
   return (
-    <BasicBlack1>
+    <BasicBlack2>
+      <MainNav />
       <Container>
         <div>
           <Logo src={logo} alt="로고" />
@@ -122,7 +124,7 @@ const SignupComponent = () => {
           </Link>
         </Padding>
       </Container>
-    </BasicBlack1>
+    </BasicBlack2>
   );
 };
 

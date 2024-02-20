@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Logo = styled.img`
   padding: 3% 0 0 0;
   width: 12%;
+  margin-top: 5%;
 `;
 
 // font
@@ -44,21 +45,21 @@ export const Button = styled.button`
   cursor: pointer;
   font-size: 18px;
   font-weight: 700;
-  margin:10% 0 3% 0;
+  margin: 10% 0 3% 0;
 `;
 
 export const P1 = styled.p`
-font-size: 16px;
-font-weight: 700;
-color: #fff;
-padding-bottom: 0.8%;
-`
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  padding-bottom: 0.8%;
+`;
 
 export const P2 = styled.p`
-font-size: 14px;
-font-weight: 300;
-color: #cacaca;
-`
+  font-size: 14px;
+  font-weight: 300;
+  color: #cacaca;
+`;
 export const Padding = styled.div`
-padding-bottom: 4%;
-`
+  padding-bottom: 4%;
+`;

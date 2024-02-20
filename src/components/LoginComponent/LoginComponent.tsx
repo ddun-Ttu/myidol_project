@@ -5,6 +5,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
+import MainNav from "../CommonComponent/MainNav/MainNav";
 
 import {
   Logo,
@@ -55,6 +56,7 @@ const LoginComponent = () => {
   };
   return (
     <LoginContainer>
+      <MainNav />
       <BasicBlack1>
         <Container>
           <div>

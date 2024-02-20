@@ -7,6 +7,7 @@ export const LoginContainer = styled.div`
 export const Logo = styled.img`
   padding: 3% 0 0 0;
   width: 12%;
+  margin-top: 5%;
 `;
 // font
 export const H1 = styled.p`
