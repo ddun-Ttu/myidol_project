@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Nav = styled.div`
   width: 100%;
-  height: 80px;
+  height: 70px;
   // position: fixed;
   margin: ;
   z-index: 99;
@@ -40,7 +40,7 @@ export const NavP = styled.p`
 `;
 
 export const NavLogo = styled.img`
-  width: 90%;
+  width: 80%;
 `;
 
 export const EmptyCenter = styled.div`
