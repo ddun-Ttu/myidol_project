@@ -28,8 +28,6 @@ const MainNav = () => {
     return () => unsubscribe();
   }, []);
 
-  console.log(isLoggedIn);
-
   const handleLogout = () => {
     auth
       .signOut()
