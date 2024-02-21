@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import MainNav from "../CommonComponent/MainNav/MainNav";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // 라이브러리
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+
+import { db, storage } from "../../firebase/firebase";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import {
   collection,
   CollectionReference,
@@ -22,6 +26,7 @@ import Img2 from "../../assets/Images/Banner/Main_banner02.svg";
 import Img3 from "../../assets/Images/Banner/Main_banner03.svg";
 
 // css styles
+import { Container, BasicBlack2 } from "../../styles/Container";
 import {
   BannerDiv,
   Category,
@@ -30,11 +35,8 @@ import {
   ItemTitle,
   ItemPrice,
   Div2,
+  SeeMoreA,
 } from "./MainComponentStyle";
-import { Container, BasicBlack2 } from "../../styles/Container";
-import { db, storage } from "../../firebase/firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { useLocation, useNavigate } from "react-router-dom";
 
 const MainComponent = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
@@ -99,6 +101,8 @@ const MainComponent = () => {
       <BasicBlack2>
         <Container>
           <Category>여자 아이돌</Category>
+          <SeeMoreA to="/">더보기 ▷</SeeMoreA>
+
           <Div2>
             {initialProduct.map((item) => (
               <button key={item.id} onClick={() => handleDetailsClick(item.id)}>

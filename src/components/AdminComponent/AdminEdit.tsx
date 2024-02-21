@@ -169,18 +169,17 @@ const AdminEdit = () => {
                 type="number"
               ></Input>
             </div>
-            {/* <div>
+            <div>
               <P1>카테고리</P1>
               <Select name="items">
-                <Option value="1">전체</Option>
-                <Option value="2">여자아이돌</Option>
-                <Option value="3">남자아이돌</Option>
+                <Option value="여자아이돌">여자아이돌</Option>
+                <Option value="남자아이돌">남자아이돌</Option>
               </Select>
             </div>
             <div>
               <P1>사진</P1>
               <Input type="file"></Input>
-            </div> */}
+            </div>
             <div>
               <P1>상품설명</P1>
               <TextArea

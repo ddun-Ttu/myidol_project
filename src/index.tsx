@@ -8,6 +8,7 @@ import AdminRegister from "./components/AdminComponent/AdminRegister";
 import AdminEdit from "./components/AdminComponent/AdminEdit";
 import ProductDetail from "./components/ProductDetailComponent/ProductDetailComponent";
 import Main from "./pages/Main/Main";
+import CotegoryList from "./pages/CategoryList/CategoryList";
 import GlobalStyles from "./styles/GlobalStyles";
 // import app from "./firebase/firebase";
 
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
   { path: "/admin/register", element: <AdminRegister /> },
   { path: "/admin/edit/:id", element: <AdminEdit /> },
   { path: "/product/:id", element: <ProductDetail /> },
+  { path: "/CotegoryList", element: <CotegoryList /> },
   { path: "/", element: <Main /> },
 ]);
 
