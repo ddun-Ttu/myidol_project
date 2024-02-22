@@ -84,7 +84,7 @@ const MainComponent = () => {
 
   // Handle "See more" button click
   const handleSeeMoreClick = (category: string) => {
-    navigate("/CategoryList", { state: { category } });
+    navigate("/CotegoryList", { state: { category } });
   };
 
   return (

@@ -54,4 +54,5 @@ export const Div2 = styled.div`
 export const SeeMoreA = styled.p`
   color: #fff;
   font-size: 18px;
+  cursor: pointer;
 `;
