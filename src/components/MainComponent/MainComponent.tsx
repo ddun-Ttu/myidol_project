@@ -71,6 +71,22 @@ const MainComponent = () => {
     navigate(`/product/${id}`, { state: { id } });
   };
 
+  // 카테고리 필터링
+  const femaleIdolProducts = initialProduct.filter(
+    (item) => item.Category === "여자아이돌"
+  );
+  const first8FemaleIdolProducts = femaleIdolProducts.slice(0, 8);
+
+  const boyIdolProducts = initialProduct.filter(
+    (item) => item.Category === "남자아이돌"
+  );
+  const boy8FemaleIdolProducts = boyIdolProducts.slice(0, 8);
+
+  // Handle "See more" button click
+  const handleSeeMoreClick = (category: string) => {
+    navigate("/CategoryList", { state: { category } });
+  };
+
   return (
     <>
       <BannerDiv>
@@ -85,11 +101,27 @@ const MainComponent = () => {
       </BannerDiv>
       <BasicBlack2>
         <Container>
-          <Category>여자 아이돌</Category>
-          <SeeMoreA to="/">더보기 ▷</SeeMoreA>
-
+          <Category>여자아이돌</Category>
+          <SeeMoreA onClick={() => handleSeeMoreClick("여자아이돌")}>
+            더보기 ▷
+          </SeeMoreA>
           <Div2>
-            {initialProduct.map((item) => (
+            {first8FemaleIdolProducts.map((item) => (
+              <button key={item.id} onClick={() => handleDetailsClick(item.id)}>
+                <ItemWrapper key={item.id}>
+                  <ItemImage src={item.ImagePath} />
+                  <ItemTitle>{item.IdolName}</ItemTitle>
+                  <ItemTitle>{item.Album}</ItemTitle>
+                  <ItemPrice>₩{item.Price}</ItemPrice>
+                </ItemWrapper>
+              </button>
+            ))}
+          </Div2>
+
+          <Category>남자아이돌</Category>
+          <SeeMoreA onClick={() => handleSeeMoreClick("남자아이돌")}>더보기 ▷</SeeMoreA>
+          <Div2>
+            {boy8FemaleIdolProducts.map((item) => (
               <button key={item.id} onClick={() => handleDetailsClick(item.id)}>
                 <ItemWrapper key={item.id}>
                   <ItemImage src={item.ImagePath} />

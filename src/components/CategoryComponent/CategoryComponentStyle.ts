@@ -51,7 +51,7 @@ export const Div2 = styled.div`
   grid-template-columns: repeat(4, 1fr);
 `;
 
-export const SeeMoreA = styled.p`
+export const SeeMoreA = styled(Link)`
   color: #fff;
   font-size: 18px;
 `;
