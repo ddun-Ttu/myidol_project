@@ -7,7 +7,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 import { db, storage } from "../../firebase/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import {
@@ -61,24 +60,10 @@ const MainComponent = () => {
       });
 
       setInitialProduct(products);
-
-      console.log(initialProduct);
     };
 
     fetchData();
   }, []);
-
-  const getImageURL = async (imagePath: string) => {
-    console.log("Image Path:", imagePath);
-    try {
-      const imageRef = ref(storage, imagePath);
-      const downloadURL = await getDownloadURL(imageRef);
-      return downloadURL;
-    } catch (error) {
-      console.error("Error getting download URL:", error);
-      return "";
-    }
-  };
 
   // 상세페이지 버튼 클릭 이벤트
   const handleDetailsClick = (id: string) => {

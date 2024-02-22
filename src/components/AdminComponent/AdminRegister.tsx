@@ -100,6 +100,7 @@ const AdminRegister = () => {
     setPrice(0);
     setCount(0);
     setDetails("");
+    setCategory("");
 
     const collectionRef = collection(db, "product");
     await addDoc(collectionRef, newProduct);
@@ -184,6 +185,7 @@ const AdminRegister = () => {
             <div>
               <P1>카테고리</P1>
               <Select name="Category" value={Category} onChange={onChange}>
+                <Option value="미지정">카테고리 선택하기</Option>
                 <Option value="여자아이돌">여자아이돌</Option>
                 <Option value="남자아이돌">남자아이돌</Option>
               </Select>
