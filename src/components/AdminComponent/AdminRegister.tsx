@@ -28,6 +28,7 @@ const AdminRegister = () => {
       Count: 10,
       Details: "아이브 미니 앨범",
       ImagePath: "",
+      Category: "여자아이돌",
     },
   ]);
 
@@ -37,6 +38,7 @@ const AdminRegister = () => {
   const [Price, setPrice] = useState(0);
   const [Count, setCount] = useState(0);
   const [Details, setDetails] = useState("");
+  const [Category, setCategory] = useState("");
 
   const onChange = (event: any) => {
     const {
@@ -56,6 +58,9 @@ const AdminRegister = () => {
     }
     if (name === "Details") {
       setDetails(value);
+    }
+    if (name === "Category") {
+      setCategory(value);
     }
   };
 
@@ -83,6 +88,7 @@ const AdminRegister = () => {
       Count: Count,
       Details: Details,
       ImagePath: imageURL,
+      Category: Category,
     };
 
     setRegister((prev) => {
@@ -177,7 +183,7 @@ const AdminRegister = () => {
             </div>
             <div>
               <P1>카테고리</P1>
-              <Select name="items">
+              <Select name="Category" value={Category} onChange={onChange}>
                 <Option value="여자아이돌">여자아이돌</Option>
                 <Option value="남자아이돌">남자아이돌</Option>
               </Select>
