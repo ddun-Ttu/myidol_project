@@ -30,6 +30,11 @@ export const NavA = styled(Link)`
   color: #000;
 `;
 
+export const CartA = styled.p`
+  color: #000;
+  cursor: pointer;
+`;
+
 export const NavImg = styled.img`
   width: 41px;
   height: 41px;

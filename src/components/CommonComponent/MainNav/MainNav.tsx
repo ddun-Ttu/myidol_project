@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../../../firebase/firebase";
-
 import logo from "../../../assets/Icons/NavLogo.svg";
+import Cart from "../Cart/CartComponent";
 
 import {
   Nav,
@@ -11,13 +11,14 @@ import {
   EmptyCenter,
   NavP,
   NavLogo,
+  CartA,
 } from "./MainNavStyle";
 
 const MainNav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setIsLoggedIn(true);
       } else {
@@ -34,10 +35,17 @@ const MainNav = () => {
       .then(() => {
         setIsLoggedIn(false);
       })
-      .catch((error : any) => {
+      .catch((error: any) => {
         console.error("Error signing out: ", error);
       });
     setIsLoggedIn(false);
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
+    console.log("클릭", isOpen);
   };
 
   return (
@@ -66,9 +74,9 @@ const MainNav = () => {
           )}
 
           <NavLi>
-            <NavA to="/admin">
+            <CartA onClick={openModal}>
               <NavP>장바구니</NavP>
-            </NavA>
+            </CartA>
           </NavLi>
 
           <NavLi>
@@ -78,6 +86,11 @@ const MainNav = () => {
           </NavLi>
         </NavUl>
       </Nav>
+      {isOpen && (
+        <>
+          <Cart />
+        </>
+      )}
     </>
   );
 };
