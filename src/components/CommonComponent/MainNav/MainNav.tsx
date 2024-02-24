@@ -12,6 +12,9 @@ import {
   NavP,
   NavLogo,
   CartA,
+  CartModal,
+  CartOverlay,
+  CloseButton,
 } from "./MainNavStyle";
 
 const MainNav = () => {
@@ -43,7 +46,7 @@ const MainNav = () => {
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const openModal = () => {
+  const buttonModal = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
     console.log("클릭", isOpen);
   };
@@ -74,7 +77,7 @@ const MainNav = () => {
           )}
 
           <NavLi>
-            <CartA onClick={openModal}>
+            <CartA onClick={buttonModal}>
               <NavP>장바구니</NavP>
             </CartA>
           </NavLi>
@@ -88,7 +91,12 @@ const MainNav = () => {
       </Nav>
       {isOpen && (
         <>
-          <Cart />
+          <CartOverlay>
+            <CartModal>
+              <h2>장바구니</h2>
+              <CloseButton onClick={buttonModal}>❌</CloseButton>
+            </CartModal>
+          </CartOverlay>
         </>
       )}
     </>

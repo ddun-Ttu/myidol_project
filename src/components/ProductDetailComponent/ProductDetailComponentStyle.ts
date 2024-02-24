@@ -108,6 +108,7 @@ export const DetailsExDiv = styled.div`
 export const DetailsExP = styled.p`
   color: #fff;
   font-size: 30px;
+  white-space: pre-wrap;
 `;
 
 // 전체 container 스타일
