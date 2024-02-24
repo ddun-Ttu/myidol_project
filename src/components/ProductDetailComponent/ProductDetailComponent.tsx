@@ -23,6 +23,11 @@ import {
   DetailsExP,
   Div,
   ContainerPro,
+  Line,
+  DivLeft,
+  DivRight,
+  ItemIdolName,
+  LeftAlign,
 } from "./ProductDetailComponentStyle";
 
 const ProductDetail = () => {
@@ -80,6 +85,10 @@ const ProductDetail = () => {
     return <div>Loading...</div>;
   }
 
+  const addCommas = (num: number) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   const album = product.Album;
   const count = product.Count;
   const details = product.Details;
@@ -87,36 +96,49 @@ const ProductDetail = () => {
   const price = product.Price;
   const img = product.ImagePath;
 
+  const totalPrice = quantity * price;
+
   return (
     <>
       <ContainerPro>
         <BasicBlack2>
           <MainNav />
           <Div>
-            <ProductImage src={img} />
-            <ProductInfo>
-              <ProductTitle>{album}</ProductTitle>
-              <ProductTitle>{idolname}</ProductTitle>
-              <ProductPrice>{price}원</ProductPrice>
-              <QuantityWrapper>
-                <QuantityLabel>수량</QuantityLabel>
-                <QuantityButton onClick={handleDecrease}>-</QuantityButton>
-                <QuantityInput
-                  value={quantity.toString()}
-                  onChange={handleQuantityChange}
-                />
-                <QuantityButton onClick={handleIncrease}>+</QuantityButton>
-              </QuantityWrapper>
-              <TotalPrice>총액: {quantity * price}원</TotalPrice>
-            </ProductInfo>
-            <ButtonWrapper>
-              <BuyButton>바로 구매하기</BuyButton>
-              <CartButton>장바구니 담기</CartButton>
-            </ButtonWrapper>
-            <DetailsExDiv>
-              <DetailsExP>{details}</DetailsExP>
-            </DetailsExDiv>
+            <DivLeft>
+              <ProductImage src={img} />
+            </DivLeft>
+
+            <DivRight>
+              <ProductInfo>
+                <LeftAlign>
+                  <ItemIdolName>{idolname}</ItemIdolName>
+                  <ProductTitle>{album}</ProductTitle>
+                  <ProductPrice>{addCommas(price)}</ProductPrice>
+                </LeftAlign>
+                <Line></Line>
+
+                <QuantityWrapper>
+                  <QuantityLabel>수량</QuantityLabel>
+                  <QuantityButton onClick={handleDecrease}>-</QuantityButton>
+                  <QuantityInput
+                    value={quantity.toString()}
+                    onChange={handleQuantityChange}
+                  />
+                  <QuantityButton onClick={handleIncrease}>+</QuantityButton>
+                </QuantityWrapper>
+                <TotalPrice>TOTAL {addCommas(totalPrice)}</TotalPrice>
+              </ProductInfo>
+              <ButtonWrapper>
+                <BuyButton>바로 구매하기</BuyButton>
+                <CartButton>장바구니 담기</CartButton>
+              </ButtonWrapper>
+            </DivRight>
           </Div>
+          <Line></Line>
+
+          <DetailsExDiv>
+            <DetailsExP>{details}</DetailsExP>
+          </DetailsExDiv>
         </BasicBlack2>
       </ContainerPro>
     </>

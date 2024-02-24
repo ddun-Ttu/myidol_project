@@ -9,11 +9,10 @@ export const Container = styled.div`
 `;
 
 export const ProductImage = styled.img`
-  width: 50%;
-  height: 50%;
+  width: 80%;
+  height: 80%;
   margin: 0 auto;
   object-fit: contain;
-  display: grid;
   place-items: center;
 `;
 
@@ -25,8 +24,9 @@ export const ProductInfo = styled.div`
 `;
 
 export const ProductTitle = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 22px;
+  margin-top: 1%;
+  font-weight: 700;
   color: #fff;
 `;
 
@@ -34,6 +34,12 @@ export const ProductPrice = styled.h2`
   font-size: 18px;
   margin-top: 10px;
   color: #fff;
+`;
+
+export const ItemIdolName = styled.p`
+  font-size: 16px;
+  margin-top: 6%;
+  color: #9c9c9c;
 `;
 
 export const QuantityWrapper = styled.div`
@@ -63,11 +69,13 @@ export const TotalPrice = styled.h2`
   color: #fff;
 `;
 
+export const LeftAlign = styled.div`
+  text-align: left;
+`;
 export const ButtonWrapper = styled.div`
   // display: flex;
   // justify-content: space-between;
   // margin-top: 20px;
-  // width: 100%;
   // flexdirection: column;
   // align-items: center;
   display: grid;
@@ -75,7 +83,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const BuyButton = styled.button`
-  width: 20%;
+  width: 40%;
   height: 50px;
   border: 2px solid #fff;
   border-radius: 50px;
@@ -87,7 +95,7 @@ export const BuyButton = styled.button`
 `;
 
 export const CartButton = styled.button`
-  width: 20%;
+  width: 40%;
   height: 50px;
   background-color: #fff;
   border-radius: 50px;
@@ -100,15 +108,24 @@ export const CartButton = styled.button`
 
 export const Div = styled.div`
   padding-top: 10%;
+  display: flex;
 `;
 
 export const DetailsExDiv = styled.div`
-  padding: 10%;
+  padding: 0 10%;
+  text-align: left;
 `;
 export const DetailsExP = styled.p`
   color: #fff;
-  font-size: 30px;
+  font-size: 16px;
   white-space: pre-wrap;
+`;
+
+export const Line = styled.div`
+  width: 60%;
+  height: 1px; /* 선 길이 */
+  background-color: #fff; /* 선 색상 */
+  margin: 5% auto; /* 가운데 정렬 */
 `;
 
 // 전체 container 스타일
@@ -123,7 +140,14 @@ export const QuantityButton = styled.button`
   display: flex;
   align-items: center;
   border-radius: 4px;
-  // overflow: hidden;
   padding: 10%;
   color: #fff;
+`;
+
+export const DivLeft = styled.div`
+  width: 50%;
+`;
+
+export const DivRight = styled.div`
+  width: 50%;
 `;
