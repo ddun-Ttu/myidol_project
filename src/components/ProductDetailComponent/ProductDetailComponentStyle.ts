@@ -7,6 +7,12 @@ export const Container = styled.div`
   width: 500px;
   margin: 20px auto;
 `;
+// 전체 container 스타일
+export const ContainerPro = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+`;
 
 export const ProductImage = styled.img`
   width: 80%;
@@ -19,7 +25,7 @@ export const ProductImage = styled.img`
 export const ProductInfo = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  // align-items: center;
   margin-top: 20px;
 `;
 
@@ -45,7 +51,7 @@ export const ItemIdolName = styled.p`
 export const QuantityWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  // margin-top: 20px;
 `;
 
 export const QuantityLabel = styled.span`
@@ -109,13 +115,20 @@ export const CartButton = styled.button`
 export const Div = styled.div`
   padding-top: 10%;
   display: flex;
+  width: 90%;
+  margin: 0 auto;
 `;
 
 export const DetailsExDiv = styled.div`
-  padding: 0 10%;
+  padding: 5% 10%;
   text-align: left;
+  border-radius: 5px;
+  background-color: #444;
+  width: 80%;
+  margin: 0 auto;
 `;
 export const DetailsExP = styled.p`
+  padding: 5%;
   color: #fff;
   font-size: 16px;
   white-space: pre-wrap;
@@ -125,14 +138,8 @@ export const Line = styled.div`
   width: 60%;
   height: 1px; /* 선 길이 */
   background-color: #fff; /* 선 색상 */
-  margin: 5% auto; /* 가운데 정렬 */
-`;
-
-// 전체 container 스타일
-export const ContainerPro = styled.div`
-  width: 100%;
-  margin: 0 auto;
-  text-align: center;
+  margin-top: 4%;
+  // margin: 5% auto; /* 가운데 정렬 */
 `;
 
 // 수량 버튼
@@ -140,8 +147,9 @@ export const QuantityButton = styled.button`
   display: flex;
   align-items: center;
   border-radius: 4px;
-  padding: 10%;
+  padding: 5% 10%;
   color: #fff;
+  font-size: 30px;
 `;
 
 export const DivLeft = styled.div`
@@ -150,4 +158,9 @@ export const DivLeft = styled.div`
 
 export const DivRight = styled.div`
   width: 50%;
+`;
+
+export const DetailBackground = styled.div`
+  border-radius: 5px;
+  background-color: #444;
 `;

@@ -134,7 +134,6 @@ const ProductDetail = () => {
               </ButtonWrapper>
             </DivRight>
           </Div>
-          <Line></Line>
 
           <DetailsExDiv>
             <DetailsExP>{details}</DetailsExP>

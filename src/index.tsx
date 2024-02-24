@@ -10,6 +10,7 @@ import ProductDetail from "./components/ProductDetailComponent/ProductDetailComp
 import Main from "./pages/Main/Main";
 import CotegoryList from "./pages/CategoryList/CategoryList";
 import GlobalStyles from "./styles/GlobalStyles";
+
 // import app from "./firebase/firebase";
 
 const router = createBrowserRouter([
