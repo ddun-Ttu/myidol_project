@@ -20,9 +20,10 @@ import {
 } from "firebase/firestore";
 
 // 배너 이미지
-import Img1 from "../../assets/Images/Banner/Main_banner01.svg";
-import Img2 from "../../assets/Images/Banner/Main_banner02.svg";
-import Img3 from "../../assets/Images/Banner/Main_banner03.svg";
+// import Img1 from "../../assets/Images/Banner/Main_banner01.svg";
+import Img1 from "../../assets/Images/Banner/img1.png";
+import Img2 from "../../assets/Images/Banner/img2.png";
+import Img3 from "../../assets/Images/Banner/img3.png";
 
 // css styles
 import { Container, BasicBlack2 } from "../../styles/Container";
@@ -35,7 +36,13 @@ import {
   ItemPrice,
   Div2,
   SeeMoreA,
+  ItemIdolName,
 } from "./MainComponentStyle";
+
+interface AddToCartProps {
+  itemId: string;
+  userId: string;
+}
 
 const MainComponent = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
@@ -87,6 +94,10 @@ const MainComponent = () => {
     navigate("/CotegoryList", { state: { category } });
   };
 
+  const addCommas = (num: number) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <>
       <BannerDiv>
@@ -101,25 +112,27 @@ const MainComponent = () => {
       </BannerDiv>
       <BasicBlack2>
         <Container>
-          <Category>여자아이돌</Category>
           <SeeMoreA onClick={() => handleSeeMoreClick("여자아이돌")}>
-            더보기 ▷
+            <Category>여자아이돌</Category>
           </SeeMoreA>
           <Div2>
             {first8FemaleIdolProducts.map((item) => (
               <button key={item.id} onClick={() => handleDetailsClick(item.id)}>
                 <ItemWrapper key={item.id}>
                   <ItemImage src={item.ImagePath} />
-                  <ItemTitle>{item.IdolName}</ItemTitle>
+                  <ItemIdolName>{item.IdolName}</ItemIdolName>
                   <ItemTitle>{item.Album}</ItemTitle>
-                  <ItemPrice>₩{item.Price}</ItemPrice>
+                  <ItemPrice>{addCommas(item.Price)}</ItemPrice>
+                  <button>장바구니</button>
                 </ItemWrapper>
               </button>
             ))}
           </Div2>
 
           <Category>남자아이돌</Category>
-          <SeeMoreA onClick={() => handleSeeMoreClick("남자아이돌")}>더보기 ▷</SeeMoreA>
+          <SeeMoreA onClick={() => handleSeeMoreClick("남자아이돌")}>
+            더보기 ▷
+          </SeeMoreA>
           <Div2>
             {boy8FemaleIdolProducts.map((item) => (
               <button key={item.id} onClick={() => handleDetailsClick(item.id)}>
