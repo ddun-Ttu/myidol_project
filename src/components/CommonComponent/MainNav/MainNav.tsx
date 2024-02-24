@@ -12,10 +12,12 @@ import {
   NavP,
   NavLogo,
   CartA,
+} from "./MainNavStyle";
+import {
   CartModal,
   CartOverlay,
   CloseButton,
-} from "./MainNavStyle";
+} from "../Cart/CartComponentStyle";
 
 const MainNav = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
