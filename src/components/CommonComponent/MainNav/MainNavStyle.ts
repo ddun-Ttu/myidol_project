@@ -8,7 +8,7 @@ export const Nav = styled.div`
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.4);
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 `;

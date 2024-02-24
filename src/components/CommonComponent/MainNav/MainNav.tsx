@@ -64,6 +64,18 @@ const MainNav = () => {
           </NavLi>
           <EmptyCenter />
 
+          <NavLi>
+            <CartA onClick={buttonModal}>
+              <NavP>장바구니</NavP>
+            </CartA>
+          </NavLi>
+
+          <NavLi>
+            <NavA to="/">
+              <NavP>내정보</NavP>
+            </NavA>
+          </NavLi>
+
           {isLoggedIn ? (
             <NavLi>
               <NavA onClick={handleLogout} to="/">
@@ -77,25 +89,13 @@ const MainNav = () => {
               </NavA>
             </NavLi>
           )}
-
-          <NavLi>
-            <CartA onClick={buttonModal}>
-              <NavP>장바구니</NavP>
-            </CartA>
-          </NavLi>
-
-          <NavLi>
-            <NavA to="/">
-              <NavP>내정보</NavP>
-            </NavA>
-          </NavLi>
         </NavUl>
       </Nav>
       {isOpen && (
         <>
           <CartOverlay>
             <CartModal>
-              <h2>장바구니</h2>
+              <Cart />
               <CloseButton onClick={buttonModal}>❌</CloseButton>
             </CartModal>
           </CartOverlay>
