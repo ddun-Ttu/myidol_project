@@ -37,6 +37,7 @@ import {
   LeftAlign,
   DetailsExH1,
 } from "./ProductDetailComponentStyle";
+
 import {
   getAuth,
   onAuthStateChanged,
@@ -48,6 +49,16 @@ const ProductDetail = () => {
   const { id } = useParams<{ id: any }>();
   const [product, setProduct] = useState<any | null>(null);
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
+  const [initialUserCart, setInitialUserCart] = useState<any[]>([]);
+
+  const [userCart, setUserCart] = useState([
+    {
+      productId: "",
+      uid: "",
+      quantity: 1,
+      totalPrice: 100,
+    },
+  ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,6 +76,7 @@ const ProductDetail = () => {
     fetchData();
   }, []);
 
+  // 수량 데이터
   const [quantity, setQuantity] = React.useState(1);
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -99,6 +111,32 @@ const ProductDetail = () => {
 
   const addCommas = (num: number) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  const handleCartAdd = async () => {
+    if (!product) return;
+
+    const totalPrice = quantity * product.Price;
+
+    const cartItem = {
+      uid: auth.currentUser?.uid,
+      productId: product.id,
+      Album: product.Album,
+      IdolName: product.IdolName,
+      Price: product.Price,
+      Count: product.Count,
+      Category: product.Category,
+      ImagePath: product.ImagePath,
+      quantity: quantity,
+      totalPrice: totalPrice,
+    };
+
+    try {
+      const docRef = await addDoc(collection(db, "cart"), cartItem);
+      console.log("Cart item added with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding cart item: ", e);
+    }
   };
 
   const album = product.Album;
@@ -142,7 +180,7 @@ const ProductDetail = () => {
               </ProductInfo>
               <ButtonWrapper>
                 <BuyButton>바로 구매하기</BuyButton>
-                <CartButton>장바구니 담기</CartButton>
+                <CartButton onClick={handleCartAdd}>장바구니 담기</CartButton>
               </ButtonWrapper>
             </DivRight>
           </Div>
