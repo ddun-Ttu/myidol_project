@@ -28,6 +28,7 @@ import {
   DivRight,
   ItemIdolName,
   LeftAlign,
+  DetailsExH1,
 } from "./ProductDetailComponentStyle";
 
 const ProductDetail = () => {
@@ -136,6 +137,7 @@ const ProductDetail = () => {
           </Div>
 
           <DetailsExDiv>
+            <DetailsExH1>상품 설명</DetailsExH1>
             <DetailsExP>{details}</DetailsExP>
           </DetailsExDiv>
         </BasicBlack2>

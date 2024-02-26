@@ -164,3 +164,11 @@ export const DetailBackground = styled.div`
   border-radius: 5px;
   background-color: #444;
 `;
+
+export const DetailsExH1 = styled.h1`
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  padding: 0%;
+`;
