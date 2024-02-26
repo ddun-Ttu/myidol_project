@@ -50,7 +50,6 @@ const MainNav = () => {
 
   const buttonModal = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
-    console.log("클릭", isOpen);
   };
 
   return (

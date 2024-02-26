@@ -46,7 +46,7 @@ const LoginComponent = () => {
         email,
         password
       );
-      console.log("유저 로그인 성공 ", userCredential.user);
+      // console.log("유저 로그인 성공 ", userCredential.user);
       navigate("/");
     } catch (error: any) {
       const errorCode = error.code;
