@@ -8,7 +8,7 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -23,6 +23,7 @@ import {
 } from "./SignupComponentStyle";
 
 import logo from "../../assets/Icons/MainLogo.svg";
+import { collection, addDoc, doc, getDoc } from "firebase/firestore";
 
 const SignupComponent = () => {
   const [email, setEmail] = useState("");
@@ -57,9 +58,18 @@ const SignupComponent = () => {
         email,
         password
       );
+
+      const user = userCredential.user;
+
+      const userRef = collection(db, "user");
+      await addDoc(userRef, {
+        uid: user.uid,
+        email: user.email,
+      });
       navigate("/login");
 
       console.log("유저 로그인 성공 ", userCredential.user);
+      console.log("파이어베이스 정보 저장 ", user);
     } catch (error: any) {
       const errorCode = error.code;
       const errorMessage = error.message;

@@ -1,4 +1,11 @@
-import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  query,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { auth, db, storage } from "../../firebase/firebase";
@@ -30,6 +37,12 @@ import {
   LeftAlign,
   DetailsExH1,
 } from "./ProductDetailComponentStyle";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  User,
+} from "firebase/auth";
 
 const ProductDetail = () => {
   const { id } = useParams<{ id: any }>();
@@ -47,8 +60,6 @@ const ProductDetail = () => {
       });
 
       setInitialProduct(products);
-
-      console.log(initialProduct);
     };
 
     fetchData();

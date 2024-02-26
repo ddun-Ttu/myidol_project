@@ -39,15 +39,11 @@ import {
   ItemIdolName,
 } from "./MainComponentStyle";
 
-interface AddToCartProps {
-  itemId: string;
-  userId: string;
-}
-
 const MainComponent = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
   const navigate = useNavigate();
   const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -89,12 +85,11 @@ const MainComponent = () => {
   );
   const boy8FemaleIdolProducts = boyIdolProducts.slice(0, 8);
 
-  // Handle "See more" button click
   const handleSeeMoreClick = (category: string) => {
     navigate("/CotegoryList", { state: { category } });
   };
 
-  const addCommas = (num: number) => {
+  const addCommas = (num: string) => {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
@@ -123,7 +118,6 @@ const MainComponent = () => {
                   <ItemIdolName>{item.IdolName}</ItemIdolName>
                   <ItemTitle>{item.Album}</ItemTitle>
                   <ItemPrice>{addCommas(item.Price)}</ItemPrice>
-                  <button>장바구니</button>
                 </ItemWrapper>
               </button>
             ))}
@@ -138,9 +132,9 @@ const MainComponent = () => {
               <button key={item.id} onClick={() => handleDetailsClick(item.id)}>
                 <ItemWrapper key={item.id}>
                   <ItemImage src={item.ImagePath} />
-                  <ItemTitle>{item.IdolName}</ItemTitle>
+                  <ItemIdolName>{item.IdolName}</ItemIdolName>
                   <ItemTitle>{item.Album}</ItemTitle>
-                  <ItemPrice>₩{item.Price}</ItemPrice>
+                  <ItemPrice>{addCommas(item.Price)}</ItemPrice>
                 </ItemWrapper>
               </button>
             ))}

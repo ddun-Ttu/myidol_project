@@ -69,11 +69,19 @@ const MainNav = () => {
             </CartA>
           </NavLi>
 
-          <NavLi>
-            <NavA to="/">
-              <NavP>내정보</NavP>
-            </NavA>
-          </NavLi>
+          {isLoggedIn ? (
+            <NavLi>
+              <NavA to="/">
+                <NavP>내정보</NavP>
+              </NavA>
+            </NavLi>
+          ) : (
+            <NavLi>
+              <NavA to="/signup">
+                <NavP>회원가입</NavP>
+              </NavA>
+            </NavLi>
+          )}
 
           {isLoggedIn ? (
             <NavLi>
