@@ -1,9 +1,16 @@
 import { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
-import { collection, getDocs, query, deleteDoc, doc, orderBy } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  query,
+  deleteDoc,
+  doc,
+  orderBy,
+} from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { useLocation, useNavigate } from "react-router-dom";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import {
   Button,
@@ -23,11 +30,11 @@ const AdminMain = () => {
   const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  // const { id } = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
-      const q = query(collection(db, "product"),orderBy('createdAt'),);
+      const q = query(collection(db, "product"));
       const querySnapshot = await getDocs(q);
       const products: any[] = [];
 
@@ -54,7 +61,7 @@ const AdminMain = () => {
 
   const handleEditClick = (id: string) => {
     setSelectedProductId(id);
-    navigate(`/admin/edit/${id}`, { state: { id } }); // 수정 페이지로 이동
+    navigate(`/admin/edit/${id}`, { state: { id } });
   };
 
   useEffect(() => {

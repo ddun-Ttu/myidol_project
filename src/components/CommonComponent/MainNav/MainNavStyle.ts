@@ -45,6 +45,12 @@ export const NavP = styled.p`
   font-weight: 500;
   margin: 4px 0 0 0;
   font-size: 16px;
+  transition: font-size 1s ease, font-weight 1s ease;
+
+  &:hover {
+    font-weight: bold;
+    font-size: 18px;
+  }
 `;
 
 export const NavLogo = styled.img`

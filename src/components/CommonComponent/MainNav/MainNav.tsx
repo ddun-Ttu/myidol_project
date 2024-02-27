@@ -71,8 +71,8 @@ const MainNav = () => {
 
           {isLoggedIn ? (
             <NavLi>
-              <NavA to="/">
-                <NavP>내정보</NavP>
+              <NavA to="/admin">
+                <NavP>관리자</NavP>
               </NavA>
             </NavLi>
           ) : (
