@@ -175,3 +175,4 @@ export const RegisterButton = styled.button`
   font-weight: 700;
   margin: 10% 0 3% 0;
 `;
+

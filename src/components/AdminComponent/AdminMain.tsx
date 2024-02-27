@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
+import Swal from "sweetalert2";
 import {
   collection,
   getDocs,
@@ -48,15 +49,51 @@ const AdminMain = () => {
     fetchData();
   }, []);
 
-  const HandleDeleteClick = async (id: string) => {
-    const RegisterRef = doc(db, "product", id);
-
-    await deleteDoc(RegisterRef);
-    console.log("아이디값", id);
-
-    setInitialProduct((prev) => {
-      return prev.filter((element) => element.id !== id);
+  const HandleDeleteClick = (id: string) => {
+    // SweetAlert 경고창 표시
+    Swal.fire({
+      icon: "question",
+      title: "주의",
+      text: "상품을 삭제하시겠습니까?",
+      showCancelButton: true,
+      confirmButtonText: "예",
+      cancelButtonText: "아니오",
+      confirmButtonColor: "#429f50",
+      cancelButtonColor: "#d33",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // 확인 버튼을 눌렀을 때 삭제 진행
+        deleteProduct(id);
+      }
     });
+  };
+  const deleteProduct = async (id: string) => {
+    try {
+      const RegisterRef = doc(db, "product", id);
+
+      await deleteDoc(RegisterRef);
+      console.log("아이디값", id);
+
+      setInitialProduct((prev) => {
+        return prev.filter((element) => element.id !== id);
+      });
+
+      // 삭제 완료 후 메시지 표시
+      Swal.fire({
+        icon: "success",
+        title: "삭제 완료",
+        text: "상품이 성공적으로 삭제되었습니다.",
+      });
+
+      // 페이지 다시 로드 또는 상태 업데이트 등 추가 작업
+    } catch (error) {
+      // 삭제 에러 발생 시 에러 메시지 표시
+      Swal.fire({
+        icon: "error",
+        title: "삭제 오류",
+        text: "상품 삭제 중 오류가 발생했습니다.",
+      });
+    }
   };
 
   const handleEditClick = (id: string) => {
@@ -78,6 +115,7 @@ const AdminMain = () => {
       }
     }
   }, [pathname, selectedProductId]);
+
   return (
     <>
       <AdminNav />
