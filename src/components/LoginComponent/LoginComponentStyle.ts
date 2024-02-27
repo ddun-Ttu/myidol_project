@@ -13,9 +13,9 @@ export const Logo = styled.img`
 export const H1 = styled.p`
   font-size: 24px;
   margin: 20px 0 0 0;
-  padding: 2%;
+  padding: 7% 0 4% 0;
   color: #000;
-  font-weight: 400;
+  font-weight: 600;
 `;
 
 export const DivLogin1 = styled.div`
@@ -56,8 +56,8 @@ export const LoginInput = styled.input`
 
 //  button
 export const Button = styled.button`
-  width: 70%;
-  height: 70px;
+  width: 60%;
+  height: 64px;
   border-radius: 50px;
   border: none;
   color: #fff;
@@ -65,7 +65,7 @@ export const Button = styled.button`
   cursor: pointer;
   font-size: 18px;
   font-weight: 700;
-  margin: 10% 0 3% 0;
+  margin: 8% 0 6% 0;
 `;
 
 export const P1 = styled.p`

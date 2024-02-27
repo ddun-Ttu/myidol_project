@@ -77,7 +77,7 @@ const LoginComponent = () => {
           </div>
           <DivLogin1>
             <div>
-              <H1>환영해요 아이돌즈</H1>
+              <H1>환영해요! 아이돌즈</H1>
             </div>
             <LoginForm>
               <div>
@@ -101,7 +101,9 @@ const LoginComponent = () => {
             </LoginForm>
 
             <div>
-              <Button onClick={SignIn}>로그인하기</Button>
+              <Button onClick={SignIn}>
+                로그인하기
+              </Button>
             </div>
           </DivLogin1>
 
