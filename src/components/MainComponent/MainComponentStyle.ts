@@ -41,14 +41,14 @@ export const ItemImage = styled.img`
   }
 `;
 
-export const ItemTitle = styled.p`
+export const ItemTitle = styled.div`
   font-size: 18px;
   margin-top: 1%;
   font-weight: 700;
   color: #fff;
 `;
 
-export const ItemIdolName = styled.p`
+export const ItemIdolName = styled.div`
   font-size: 16px;
   margin-top: 6%;
   color: #9c9c9c;
@@ -66,7 +66,7 @@ export const Div2 = styled.div`
   grid-template-columns: repeat(4, 1fr);
 `;
 
-export const SeeMoreA = styled.p`
+export const SeeMoreA = styled.div`
   color: #fff;
   font-size: 18px;
   cursor: pointer;

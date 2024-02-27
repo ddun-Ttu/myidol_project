@@ -30,7 +30,7 @@ export const NavA = styled(Link)`
   color: #000;
 `;
 
-export const CartA = styled.p`
+export const CartA = styled.div`
   color: #000;
   cursor: pointer;
 `;

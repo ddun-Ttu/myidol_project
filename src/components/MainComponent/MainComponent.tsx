@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from "react";
 import MainNav from "../CommonComponent/MainNav/MainNav";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // 라이브러리
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { db, storage } from "../../firebase/firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { db} from "../../firebase/firebase";
 import {
   collection,
-  CollectionReference,
-  DocumentData,
   getDocs,
   query,
-  deleteDoc,
-  doc,
 } from "firebase/firestore";
 
 // 배너 이미지
