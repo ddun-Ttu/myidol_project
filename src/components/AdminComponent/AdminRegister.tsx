@@ -1,4 +1,5 @@
-import  { useState } from "react";
+// eslint-disable-next-line no-unused-vars
+import { useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
 import { addDoc, collection } from "firebase/firestore";
 import { auth, db, storage } from "../../firebase/firebase";
@@ -29,7 +30,6 @@ const AdminRegister = () => {
       Category: "여자아이돌",
     },
   ]); // ts-ignore: unused variable
-
 
   // 상품 Input 기본값 리셋
   const [Album, setAlbum] = useState("");

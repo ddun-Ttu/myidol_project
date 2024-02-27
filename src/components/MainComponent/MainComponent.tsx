@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { useEffect, useState } from "react";
 import MainNav from "../CommonComponent/MainNav/MainNav";
 import { useNavigate } from "react-router-dom";
@@ -7,12 +8,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import { db} from "../../firebase/firebase";
-import {
-  collection,
-  getDocs,
-  query,
-} from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import { collection, getDocs, query } from "firebase/firestore";
 
 // 배너 이미지
 // import Img1 from "../../assets/Images/Banner/Main_banner01.svg";
@@ -37,8 +34,7 @@ import {
 const MainComponent = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
   const navigate = useNavigate();
-  const [selectedProductId, setSelectedProductId] = useState<any | null>(null); // ts-ignore: unused variable
-
+  const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
   const settings = {
     dots: true,
     infinite: true,
