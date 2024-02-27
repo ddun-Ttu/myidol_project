@@ -67,6 +67,10 @@ const Cart = () => {
     setInitialCart(userCart);
   };
 
+  const addCommas = (num: number) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <>
       {isLoggedIn ? (
@@ -101,7 +105,9 @@ const Cart = () => {
               <P1>{initialCart.length}</P1>
               <P1>총 금액</P1>
               <P1>
-                {initialCart.reduce((acc, cur) => acc + cur.totalPrice, 0)}
+                {addCommas(
+                  initialCart.reduce((acc, cur) => acc + cur.totalPrice, 0)
+                )}
               </P1>
 
               <BuyButton>전체 구매하기</BuyButton>
