@@ -37,7 +37,7 @@ import {
 const MainComponent = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
   const navigate = useNavigate();
-  const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
+  const [selectedProductId, setSelectedProductId] = useState<any | null>(null); // ts-ignore: unused variable
 
   const settings = {
     dots: true,

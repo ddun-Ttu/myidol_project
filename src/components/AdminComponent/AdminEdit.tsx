@@ -1,122 +1,122 @@
-import React, { useEffect, useState } from "react";
-import AdminNav from "../CommonComponent/AdminNav/AdminNav";
-import { useParams, useNavigate } from "react-router-dom";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDocs,
-  query,
-  updateDoc,
-} from "firebase/firestore";
-import { db } from "../../firebase/firebase";
+// import React, { useEffect, useState } from "react";
+// import AdminNav from "../CommonComponent/AdminNav/AdminNav";
+// import { useParams, useNavigate } from "react-router-dom";
+// import {
+//   addDoc,
+//   collection,
+//   doc,
+//   getDocs,
+//   query,
+//   updateDoc,
+// } from "firebase/firestore";
+// import { db } from "../../firebase/firebase";
 
-import {
-  Form,
-  Input,
-  H1,
-  P1,
-  Select,
-  Option,
-  TextArea,
-  RegisterButton,
-} from "./AdminComponentStyle";
-import { ContainerWhite } from "../../styles/Container";
+// import {
+//   Form,
+//   Input,
+//   H1,
+//   P1,
+//   Select,
+//   Option,
+//   TextArea,
+//   RegisterButton,
+// } from "./AdminComponentStyle";
+// import { ContainerWhite } from "../../styles/Container";
 
 const AdminEdit = () => {
-  const { productId } = useParams<{ productId: any }>();
-  const [initialProduct, setInitialProduct] = useState<any[]>([]);
-  const [register, setRegister] = useState([
-    {
-      Album: "앨범명",
-      IdolName: "아이돌명",
-      Price: 23000,
-      Count: 10,
-      Details: "상세 설명",
-      Category: "여자아이돌",
-    },
-  ]);
+  // const { productId } = useParams<{ productId: any }>();
+  // const [initialProduct, setInitialProduct] = useState<any[]>([]);
+  // const [register, setRegister] = useState([
+  //   {
+  //     Album: "앨범명",
+  //     IdolName: "아이돌명",
+  //     Price: 23000,
+  //     Count: 10,
+  //     Details: "상세 설명",
+  //     Category: "여자아이돌",
+  //   },
+  // ]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const q = query(collection(db, "product"));
-      const querySnapshot = await getDocs(q);
-      const products: any[] = [];
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const q = query(collection(db, "product"));
+  //     const querySnapshot = await getDocs(q);
+  //     const products: any[] = [];
 
-      querySnapshot.forEach((doc) => {
-        products.push({ id: doc.id, ...doc.data() });
-      });
+  //     querySnapshot.forEach((doc) => {
+  //       products.push({ id: doc.id, ...doc.data() });
+  //     });
 
-      setInitialProduct(products);
-      console.log(initialProduct);
+  //     setInitialProduct(products);
+  //     console.log(initialProduct);
 
-      const selectedProduct = products.find(
-        (product) => product.id === productId
-      );
+  //     const selectedProduct = products.find(
+  //       (product) => product.id === productId
+  //     );
 
-      console.log(querySnapshot);
-    };
+  //     console.log(querySnapshot);
+  //   };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
-  const handleEditSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // const handleEditSubmit = async (e: React.FormEvent) => {
+  //   e.preventDefault();
 
-    const productRef = doc(db, "product", productId);
+  //   const productRef = doc(db, "product", productId);
 
-    try {
-      await updateDoc(productRef, productId);
-      console.log("Product updated successfully!");
-    } catch (error) {
-      console.error("Error updating product:", error);
-    }
-  };
+  //   try {
+  //     await updateDoc(productRef, productId);
+  //     console.log("Product updated successfully!");
+  //   } catch (error) {
+  //     console.error("Error updating product:", error);
+  //   }
+  // };
 
-  const [Album, setAlbum] = useState("");
-  const [IdolName, setIdolName] = useState("");
-  const [Price, setPrice] = useState(0);
-  const [Count, setCount] = useState(0);
-  const [Details, setDetails] = useState("");
-  const [Category, setCategory] = useState("");
+  // const [Album, setAlbum] = useState("");
+  // const [IdolName, setIdolName] = useState("");
+  // const [Price, setPrice] = useState(0);
+  // const [Count, setCount] = useState(0);
+  // const [Details, setDetails] = useState("");
+  // const [Category, setCategory] = useState("");
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setRegister((prevProduct) => ({
-      ...prevProduct,
-      [name]: value,
-    }));
-  };
+  // const handleChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const { name, value } = e.target;
+  //   setRegister((prevProduct) => ({
+  //     ...prevProduct,
+  //     [name]: value,
+  //   }));
+  // };
 
-  const EditProduct = async (event: any) => {
-    event.preventDefault();
-    const newProduct = {
-      Album: Album,
-      IdolName: IdolName,
-      Price: Price,
-      Count: Count,
-      Details: Details,
-      Category: Category,
-    };
-    setRegister((prev) => {
-      return [...prev, newProduct];
-    });
+  // const EditProduct = async (event: any) => {
+  //   event.preventDefault();
+  //   const newProduct = {
+  //     Album: Album,
+  //     IdolName: IdolName,
+  //     Price: Price,
+  //     Count: Count,
+  //     Details: Details,
+  //     Category: Category,
+  //   };
+  //   setRegister((prev) => {
+  //     return [...prev, newProduct];
+  //   });
 
-    setAlbum("");
-    setIdolName("");
-    setPrice(0);
-    setCount(0);
-    setDetails("");
+  //   setAlbum("");
+  //   setIdolName("");
+  //   setPrice(0);
+  //   setCount(0);
+  //   setDetails("");
 
-    const collectionRef = collection(db, "product");
-    await addDoc(collectionRef, newProduct);
-  };
+  //   const collectionRef = collection(db, "product");
+  //   await addDoc(collectionRef, newProduct);
+  // };
 
   return (
     <>
-      <AdminNav />
+      {/* <AdminNav />
       <ContainerWhite>
         <div>
           <H1>상품등록</H1>
@@ -195,7 +195,7 @@ const AdminEdit = () => {
             </div>
           </Form>
         </div>
-      </ContainerWhite>
+      </ContainerWhite> */}
     </>
   );
 };

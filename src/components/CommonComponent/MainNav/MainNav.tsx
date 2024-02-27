@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "../../../firebase/firebase";
 import logo from "../../../assets/Icons/NavLogo.svg";
 import Cart from "../Cart/CartComponent";

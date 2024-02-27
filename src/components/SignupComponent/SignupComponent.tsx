@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import { useState, useEffect} from "react";
 import { Container, BasicBlack2 } from "../../styles/Container";
 import { Link } from "react-router-dom";
 import MainNav from "../CommonComponent/MainNav/MainNav";
@@ -23,7 +23,7 @@ import {
 } from "./SignupComponentStyle";
 
 import logo from "../../assets/Icons/MainLogo.svg";
-import { collection, addDoc, doc, getDoc } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 
 const SignupComponent = () => {
   const [email, setEmail] = useState("");
