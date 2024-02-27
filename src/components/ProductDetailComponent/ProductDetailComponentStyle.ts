@@ -36,7 +36,7 @@ export const ProductTitle = styled.h1`
   color: #fff;
 `;
 
-export const ProductPrice = styled.h2`
+export const ProductPrice = styled.div`
   font-size: 18px;
   margin-top: 10px;
   color: #fff;
@@ -68,28 +68,28 @@ export const QuantityInput = styled.input`
   text-align: center;
 `;
 
-export const TotalPrice = styled.h2`
+export const TotalPrice = styled.div`
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 800;
   margin-top: 20px;
+  text-align: left;
   color: #fff;
 `;
+export const Span = styled.span`
+margin-left: 30%;
+font-weight: 600;
+font-size: 20px;
+`
 
 export const LeftAlign = styled.div`
   text-align: left;
 `;
 export const ButtonWrapper = styled.div`
-  // display: flex;
-  // justify-content: space-between;
-  // margin-top: 20px;
-  // flexdirection: column;
-  // align-items: center;
-  display: grid;
-  placeitmes: center;
+  display: flex;
 `;
 
 export const BuyButton = styled.button`
-  width: 40%;
+  width: 32%;
   height: 50px;
   border: 2px solid #fff;
   border-radius: 50px;
@@ -97,11 +97,12 @@ export const BuyButton = styled.button`
   font-size: 16px;
   cursor: pointer;
   font-weight: bold;
-  margin: 3% auto 1% auto;
+  margin: 8% 3% 3% 0;
+
 `;
 
 export const CartButton = styled.button`
-  width: 40%;
+  width: 32%;
   height: 50px;
   background-color: #fff;
   border-radius: 50px;
@@ -109,7 +110,7 @@ export const CartButton = styled.button`
   color: #000;
   font-size: 16px;
   cursor: pointer;
-  margin: auto;
+  margin: 8% 3% 3% 0;
 `;
 
 export const Div = styled.div`

@@ -1,9 +1,4 @@
-import {
-  addDoc,
-  collection,
-  getDocs,
-  query,
-} from "firebase/firestore";
+import { addDoc, collection, getDocs, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { auth, db } from "../../firebase/firebase";
@@ -34,7 +29,7 @@ import {
   ItemIdolName,
   LeftAlign,
   DetailsExH1,
-  
+  Span,
 } from "./ProductDetailComponentStyle";
 
 const ProductDetail = () => {
@@ -124,7 +119,7 @@ const ProductDetail = () => {
     };
 
     try {
-      const docRef = await addDoc(collection(db, "cart"), cartItem);// ts-ignore: unused variable
+      const docRef = await addDoc(collection(db, "cart"), cartItem); // ts-ignore: unused variable
     } catch (e) {
       console.error("Error adding cart item: ", e);
     }
@@ -167,7 +162,9 @@ const ProductDetail = () => {
                   />
                   <QuantityButton onClick={handleIncrease}>+</QuantityButton>
                 </QuantityWrapper>
-                <TotalPrice>TOTAL {addCommas(totalPrice)}</TotalPrice>
+                <TotalPrice>
+                  TOTAL <Span>{addCommas(totalPrice)}</Span>
+                </TotalPrice>
               </ProductInfo>
               <ButtonWrapper>
                 <BuyButton>바로 구매하기</BuyButton>
