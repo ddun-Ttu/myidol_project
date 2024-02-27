@@ -119,7 +119,7 @@ const ProductDetail = () => {
     };
 
     try {
-      const docRef = await addDoc(collection(db, "cart"), cartItem); // ts-ignore: unused variable
+      const docRef = await addDoc(collection(db, "cart"), cartItem); 
     } catch (e) {
       console.error("Error adding cart item: ", e);
     }

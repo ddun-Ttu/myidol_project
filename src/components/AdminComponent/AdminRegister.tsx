@@ -118,7 +118,7 @@ const AdminRegister = () => {
       );
       await uploadBytes(imageRef, selectedFile);
 
-      // const downloadURL: string = await getDownloadURL(imageRef);
+      const downloadURL: string = await getDownloadURL(imageRef);
     }
   };
 
