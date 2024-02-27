@@ -63,3 +63,8 @@ export const P2 = styled.p`
 export const Padding = styled.div`
   padding-bottom: 4%;
 `;
+
+export const GuideP = styled.div`
+color: red;
+font-size: 16px;
+`

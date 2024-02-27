@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { Container, BasicBlack2 } from "../../styles/Container";
 import { Link } from "react-router-dom";
 import MainNav from "../CommonComponent/MainNav/MainNav";
@@ -20,6 +20,7 @@ import {
   P1,
   P2,
   Padding,
+  GuideP,
 } from "./SignupComponentStyle";
 
 import logo from "../../assets/Icons/MainLogo.svg";
@@ -28,6 +29,8 @@ import { collection, addDoc } from "firebase/firestore";
 const SignupComponent = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [passwordMatch, setPasswordMatch] = useState(true);
   const navigate = useNavigate();
 
   // 유저 접속 여부 확인 -> 추후 uid 값으로 페이지 변환시키기
@@ -47,12 +50,24 @@ const SignupComponent = () => {
     if (name === "password") {
       setPassword(value);
     }
+    if (name === "password2") {
+      setPassword2(value);
+    }
   };
+
+  useEffect(() => {
+    setPasswordMatch(password === password2);
+  }, [password, password2]);
 
   const SignUp = async (event: any) => {
     event.preventDefault();
 
     try {
+      if (!passwordMatch) {
+        console.log("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+        return;
+      }
+
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
@@ -76,7 +91,7 @@ const SignupComponent = () => {
       console.log("유저 로그인 에러 ", errorCode, errorMessage);
     }
   };
-
+  const isInputEmpty = !email || !password || !password2;
   return (
     <BasicBlack2>
       <MainNav />
@@ -113,16 +128,23 @@ const SignupComponent = () => {
             <div>
               <SignupInput
                 type="password"
-                name="password"
-                value={password}
+                name="password2"
+                value={password2}
                 onChange={onChange}
                 placeholder="비밀번호 확인"
                 required
               ></SignupInput>
+              {!passwordMatch && (
+                <GuideP>비밀번호와 비밀번호 확인이 일치하지 않습니다.</GuideP>
+              )}
             </div>
-
             <div>
-              <Button onClick={SignUp}>회원가입하기</Button>
+              <Button
+                onClick={SignUp}
+                disabled={isInputEmpty || !passwordMatch}
+              >
+                회원가입
+              </Button>
             </div>
           </SignupForm>
         </div>

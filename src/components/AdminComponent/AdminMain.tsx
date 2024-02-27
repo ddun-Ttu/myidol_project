@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
-import { collection, getDocs, query, deleteDoc, doc } from "firebase/firestore";
+import { collection, getDocs, query, deleteDoc, doc, orderBy } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { useLocation, useNavigate } from "react-router-dom";
 // import { useParams } from "react-router-dom";
@@ -27,7 +27,7 @@ const AdminMain = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const q = query(collection(db, "product"));
+      const q = query(collection(db, "product"),orderBy('createdAt'),);
       const querySnapshot = await getDocs(q);
       const products: any[] = [];
 
