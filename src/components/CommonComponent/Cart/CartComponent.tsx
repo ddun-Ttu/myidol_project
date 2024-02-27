@@ -28,11 +28,14 @@ import {
   NavA,
   H1,
   LoginButton,
+  P1,
+  P2,
 } from "./CartComponentStyle";
 
 const Cart = () => {
   const [initialCart, setInitialCart] = useState<any[]>([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -62,13 +65,6 @@ const Cart = () => {
     });
 
     setInitialCart(userCart);
-    console.log(userCart);
-  };
-
-  const [isOpen, setIsOpen] = useState(false);
-
-  const buttonModal = () => {
-    setIsOpen((prevIsOpen) => !prevIsOpen);
   };
 
   return (
@@ -101,6 +97,13 @@ const Cart = () => {
                   ))}
                 </Tbody>
               </Table>
+              <P1>총 수량</P1>
+              <P1>{initialCart.length}</P1>
+              <P1>총 금액</P1>
+              <P1>
+                {initialCart.reduce((acc, cur) => acc + cur.totalPrice, 0)}
+              </P1>
+
               <BuyButton>전체 구매하기</BuyButton>
             </>
           ) : (

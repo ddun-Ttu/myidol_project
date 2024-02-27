@@ -134,7 +134,6 @@ const ProductDetail = () => {
 
     try {
       const docRef = await addDoc(collection(db, "cart"), cartItem);
-      console.log("Cart item added with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding cart item: ", e);
     }
