@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import MainNav from "../CommonComponent/MainNav/MainNav";
-import { db, storage } from "../../firebase/firebase";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { collection, getDocs, query, deleteDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase";
+import { collection, getDocs, query} from "firebase/firestore";
 
 // css styles
 import { Container, BasicBlack2 } from "../../styles/Container";

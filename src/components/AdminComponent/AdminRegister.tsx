@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
 import { addDoc, collection } from "firebase/firestore";
 import { auth, db, storage } from "../../firebase/firebase";
@@ -8,11 +8,9 @@ import {
   Input,
   H1,
   P1,
-  Button,
   Select,
   Option,
   TextArea,
-  Label,
   RegisterButton,
 } from "./AdminComponentStyle";
 import { ContainerWhite } from "../../styles/Container";
@@ -120,8 +118,7 @@ const AdminRegister = () => {
       );
       await uploadBytes(imageRef, selectedFile);
 
-      const downloadURL: string = await getDownloadURL(imageRef);
-      // console.log(downloadURL);
+      // const downloadURL: string = await getDownloadURL(imageRef);
     }
   };
 

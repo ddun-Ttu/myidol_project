@@ -1,19 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import { CartModal, CartOverlay, CloseButton } from "./CartComponentStyle";
-
-import {
-  collection,
-  CollectionReference,
-  DocumentData,
-  getDocs,
-  query,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 import { auth, db } from "../../../firebase/firebase";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 import {
   Table,
@@ -29,13 +17,12 @@ import {
   H1,
   LoginButton,
   P1,
-  P2,
 } from "./CartComponentStyle";
 
 const Cart = () => {
   const [initialCart, setInitialCart] = useState<any[]>([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {

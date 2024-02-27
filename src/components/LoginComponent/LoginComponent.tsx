@@ -1,10 +1,10 @@
 import { Container, BasicBlack1 } from "../../styles/Container";
 import { Link } from "react-router-dom";
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../../firebase/firebase";
+import { auth } from "../../firebase/firebase";
 import MainNav from "../CommonComponent/MainNav/MainNav";
 
 import {
@@ -20,21 +20,20 @@ import {
   LoginContainer,
 } from "./LoginComponentStyle";
 import logo from "../../assets/Icons/MainLogo.svg";
-import { addDoc, collection } from "firebase/firestore";
 
 const LoginComponent = () => {
-  const [user, setUser] = useState([
-    {
-      email: "",
-      password: "",
-      accessToken: "",
-      uid: "",
-    },
-  ]);
+  // const [user, setUser] = useState([
+  //   {
+  //     email: "",
+  //     password: "",
+  //     accessToken: "",
+  //     uid: "",
+  //   },
+  // ]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [accessToken, setAccessToken] = useState("");
-  const [uid, setUid] = useState("");
+  // const [accessToken, setAccessToken] = useState("");
+  // const [uid, setUid] = useState("");
   const navigate = useNavigate();
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {

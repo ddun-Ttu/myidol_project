@@ -1,17 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AdminNav from "../CommonComponent/AdminNav/AdminNav";
-import {
-  collection,
-  CollectionReference,
-  DocumentData,
-  getDocs,
-  query,
-  deleteDoc,
-  doc,
-} from "firebase/firestore";
+import { collection, getDocs, query, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase/firebase";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 import {
   Button,
@@ -31,7 +23,7 @@ const AdminMain = () => {
   const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { id } = useParams();
+  // const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,9 +36,6 @@ const AdminMain = () => {
       });
 
       setInitialProduct(products);
-
-      const a = initialProduct.map((item) => item.id);
-      // console.log(initialProduct);
     };
 
     fetchData();

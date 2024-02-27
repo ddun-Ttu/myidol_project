@@ -5,7 +5,6 @@ import {
   addDoc,
   collection,
   doc,
-  DocumentData,
   getDocs,
   query,
   updateDoc,
@@ -17,18 +16,15 @@ import {
   Input,
   H1,
   P1,
-  Button,
   Select,
   Option,
   TextArea,
-  Label,
   RegisterButton,
 } from "./AdminComponentStyle";
 import { ContainerWhite } from "../../styles/Container";
 
 const AdminEdit = () => {
   const { productId } = useParams<{ productId: any }>();
-  const navigate = useNavigate();
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
   const [register, setRegister] = useState([
     {

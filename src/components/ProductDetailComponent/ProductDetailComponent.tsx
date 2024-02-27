@@ -1,14 +1,12 @@
 import {
   addDoc,
   collection,
-  doc,
-  getDoc,
   getDocs,
   query,
 } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { auth, db, storage } from "../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 import MainNav from "../CommonComponent/MainNav/MainNav";
 import { BasicBlack2 } from "../../styles/Container";
 
@@ -39,27 +37,20 @@ import {
   
 } from "./ProductDetailComponentStyle";
 
-import {
-  getAuth,
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  User,
-} from "firebase/auth";
-
 const ProductDetail = () => {
   const { id } = useParams<{ id: any }>();
   const [product, setProduct] = useState<any | null>(null);
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
-  const [initialUserCart, setInitialUserCart] = useState<any[]>([]);
+  // const [initialUserCart, setInitialUserCart] = useState<any[]>([]);
 
-  const [userCart, setUserCart] = useState([
-    {
-      productId: "",
-      uid: "",
-      quantity: 1,
-      totalPrice: 100,
-    },
-  ]);
+  // const [userCart, setUserCart] = useState([
+  //   {
+  //     productId: "",
+  //     uid: "",
+  //     quantity: 1,
+  //     totalPrice: 100,
+  //   },
+  // ]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -140,7 +131,7 @@ const ProductDetail = () => {
   };
 
   const album = product.Album;
-  const count = product.Count;
+  // const count = product.Count;
   const details = product.Details;
   const idolname = product.IdolName;
   const price = product.Price;

@@ -1,7 +1,3 @@
-import React, { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-
 import logo from "../../../assets/Icons/NavLogo.svg";
 
 import {
