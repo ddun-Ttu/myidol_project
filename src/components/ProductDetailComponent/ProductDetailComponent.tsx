@@ -36,6 +36,7 @@ import {
   ItemIdolName,
   LeftAlign,
   DetailsExH1,
+  
 } from "./ProductDetailComponentStyle";
 
 import {

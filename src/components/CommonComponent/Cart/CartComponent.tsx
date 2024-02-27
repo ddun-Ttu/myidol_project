@@ -23,7 +23,12 @@ import {
   Thead,
   Tr,
   TableDiv,
-} from "../../AdminComponent/AdminComponentStyle";
+  ItemImage,
+  BuyButton,
+  NavA,
+  H1,
+  LoginButton,
+} from "./CartComponentStyle";
 
 const Cart = () => {
   const [initialCart, setInitialCart] = useState<any[]>([]);
@@ -68,40 +73,46 @@ const Cart = () => {
 
   return (
     <>
-      {/* 현재 사용자의 로그인 상태를 확인하고 필요에 따라 JSX를 렌더링합니다 */}
       {isLoggedIn ? (
         <TableDiv>
           {initialCart.length > 0 ? (
-            initialCart.map((cartItem) => (
-              <>
+            <>
+              <Table>
                 <Thead>
                   <tr>
+                    <Th></Th>
                     <Th>아이돌</Th>
-                    <Th>앨범명</Th>
-                    <Th>카테고리</Th>
-                    <Th>가격</Th>
+                    <Th>앨범</Th>
                     <Th>수량</Th>
+                    <Th>총 가격</Th>
                   </tr>
                 </Thead>
                 <Tbody>
-                  <Tr key={cartItem.productId}>
-                    <Td>{cartItem.IdolName}</Td>
-                    <Td>{cartItem.Album}</Td>
-                    <Td>{cartItem.Category}</Td>
-                    <Td>{cartItem.Price}</Td>
-                    <Td>{cartItem.Count}</Td>
-                  </Tr>
+                  {initialCart.map((cartItem) => (
+                    <Tr key={cartItem.productId}>
+                      <Td>
+                        <ItemImage src={cartItem.ImagePath} />
+                      </Td>
+                      <Td>{cartItem.IdolName}</Td>
+                      <Td>{cartItem.Album}</Td>
+                      <Td>{cartItem.quantity}</Td>
+                      <Td>{cartItem.totalPrice}</Td>
+                    </Tr>
+                  ))}
                 </Tbody>
-              </>
-            ))
+              </Table>
+              <BuyButton>전체 구매하기</BuyButton>
+            </>
           ) : (
-            <p>장바구니가 비어 있습니다.</p>
+            <H1>장바구니가 비어 있습니다.</H1>
           )}
         </TableDiv>
       ) : (
         <div>
-          <p>로그인이 필요합니다.</p>
-          <button onClick={buttonModal}>로그인</button>
+          <H1>로그인이 필요합니다.</H1>
+          <NavA to="/login">
+            <LoginButton>로그인</LoginButton>
+          </NavA>
         </div>
       )}
     </>
