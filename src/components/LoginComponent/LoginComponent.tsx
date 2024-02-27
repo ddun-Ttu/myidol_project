@@ -22,14 +22,14 @@ import {
 import logo from "../../assets/Icons/MainLogo.svg";
 
 const LoginComponent = () => {
-  // const [user, setUser] = useState([
-  //   {
-  //     email: "",
-  //     password: "",
-  //     accessToken: "",
-  //     uid: "",
-  //   },
-  // ]);
+  const [user, setUser] = useState([
+    {
+      email: "",
+      password: "",
+      accessToken: "",
+      uid: "",
+    },
+  ]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [accessToken, setAccessToken] = useState("");

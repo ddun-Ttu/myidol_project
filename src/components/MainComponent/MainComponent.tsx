@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import { useEffect, useState } from "react";
 import MainNav from "../CommonComponent/MainNav/MainNav";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +11,6 @@ import { db } from "../../firebase/firebase";
 import { collection, getDocs, query } from "firebase/firestore";
 
 // 배너 이미지
-// import Img1 from "../../assets/Images/Banner/Main_banner01.svg";
 import Img1 from "../../assets/Images/Banner/img1.png";
 import Img2 from "../../assets/Images/Banner/img2.png";
 import Img3 from "../../assets/Images/Banner/img3.png";
