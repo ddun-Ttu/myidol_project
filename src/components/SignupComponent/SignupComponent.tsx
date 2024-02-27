@@ -1,13 +1,14 @@
 import React from "react";
 import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { Container, BasicBlack } from "../../styles/Container";
+import { Container, BasicBlack2 } from "../../styles/Container";
 import { Link } from "react-router-dom";
+import MainNav from "../CommonComponent/MainNav/MainNav";
 
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -22,6 +23,7 @@ import {
 } from "./SignupComponentStyle";
 
 import logo from "../../assets/Icons/MainLogo.svg";
+import { collection, addDoc, doc, getDoc } from "firebase/firestore";
 
 const SignupComponent = () => {
   const [email, setEmail] = useState("");
@@ -56,9 +58,18 @@ const SignupComponent = () => {
         email,
         password
       );
+
+      const user = userCredential.user;
+
+      const userRef = collection(db, "user");
+      await addDoc(userRef, {
+        uid: user.uid,
+        email: user.email,
+      });
       navigate("/login");
 
       console.log("유저 로그인 성공 ", userCredential.user);
+      console.log("파이어베이스 정보 저장 ", user);
     } catch (error: any) {
       const errorCode = error.code;
       const errorMessage = error.message;
@@ -67,7 +78,8 @@ const SignupComponent = () => {
   };
 
   return (
-    <BasicBlack>
+    <BasicBlack2>
+      <MainNav />
       <Container>
         <div>
           <Logo src={logo} alt="로고" />
@@ -122,7 +134,7 @@ const SignupComponent = () => {
           </Link>
         </Padding>
       </Container>
-    </BasicBlack>
+    </BasicBlack2>
   );
 };
 

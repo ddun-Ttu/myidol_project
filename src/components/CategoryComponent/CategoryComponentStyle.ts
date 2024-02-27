@@ -7,58 +7,43 @@ export const BannerDiv = styled.div`
 `;
 
 export const Category = styled.div`
-  font-size: 22px;
+  font-size: 24px;
   color: white;
-  font-weight: bold;
-  padding-top: 8%;
+  padding-top: 5%;
   margin-bottom: 3%;
 `;
 
 export const ItemWrapper = styled.div`
-  padding: 5%;
+  border-radius: 4px;
+  padding: 10%;
   display: flex;
   flex-direction: column;
-  // align-items: center;
+  align-items: center;
   justify-content: center;
   cursor: pointer;
   grid-column: span 1;
   box-sizing: border-box;
-  text-align: left;
-
-  height: 100%;
-`;
-
-export const ItemImage = styled.img`
-  border-radius: 4px;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform-style: preserve-3d; /* 3D 변형 유지 */
-  transition: transform 0.8s ease-in-out;
 
   &:hover {
-    transform: translateZ(100px) rotateY(360deg);
+    background-color: #f2f2f2;
   }
 `;
 
-export const ItemTitle = styled.div`
-  font-size: 18px;
-  margin-top: 1%;
-  font-weight: 700;
-  color: #fff;
+export const ItemImage = styled.img`
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 `;
 
-export const ItemIdolName = styled.div`
-  font-size: 16px;
-  margin-top: 6%;
-  color: #9c9c9c;
+export const ItemTitle = styled.div`
+  font-size: 20px;
+  margin-top: 3%;
+  color: #fff;
 `;
 
 export const ItemPrice = styled.div`
-  font-size: 16px;
-  color: #fff;
-  font-weight: 800;
-  margin-top: 3%;
+  font-size: 18px;
+  color: #777;
 `;
 
 export const Div2 = styled.div`
@@ -66,8 +51,7 @@ export const Div2 = styled.div`
   grid-template-columns: repeat(4, 1fr);
 `;
 
-export const SeeMoreA = styled.div`
+export const SeeMoreA = styled(Link)`
   color: #fff;
   font-size: 18px;
-  cursor: pointer;
 `;

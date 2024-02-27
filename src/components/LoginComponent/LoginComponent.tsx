@@ -1,10 +1,11 @@
-import { Container, BasicBlack } from "../../styles/Container";
+import { Container, BasicBlack1 } from "../../styles/Container";
 import { Link } from "react-router-dom";
 import { useState, ChangeEvent, FormEvent } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
+import { auth, db } from "../../firebase/firebase";
+import MainNav from "../CommonComponent/MainNav/MainNav";
 
 import {
   Logo,
@@ -19,10 +20,21 @@ import {
   LoginContainer,
 } from "./LoginComponentStyle";
 import logo from "../../assets/Icons/MainLogo.svg";
+import { addDoc, collection } from "firebase/firestore";
 
 const LoginComponent = () => {
+  const [user, setUser] = useState([
+    {
+      email: "",
+      password: "",
+      accessToken: "",
+      uid: "",
+    },
+  ]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [accessToken, setAccessToken] = useState("");
+  const [uid, setUid] = useState("");
   const navigate = useNavigate();
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,17 +57,21 @@ const LoginComponent = () => {
         email,
         password
       );
+
       console.log("유저 로그인 성공 ", userCredential.user);
-      navigate("/signup");
+
+      navigate("/");
     } catch (error: any) {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log("유저 로그인 에러 ", errorCode, errorMessage);
     }
   };
+
   return (
     <LoginContainer>
-      <BasicBlack>
+      <MainNav />
+      <BasicBlack1>
         <Container>
           <div>
             <Logo src={logo} alt="로고" />
@@ -97,7 +113,7 @@ const LoginComponent = () => {
             </Link>
           </Padding>
         </Container>
-      </BasicBlack>
+      </BasicBlack1>
     </LoginContainer>
   );
 };

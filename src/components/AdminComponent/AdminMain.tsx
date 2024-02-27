@@ -95,6 +95,7 @@ const AdminMain = () => {
             <tr>
               <Th>아이돌</Th>
               <Th>앨범명</Th>
+              <Th>카테고리</Th>
               <Th>가격</Th>
               <Th>수량</Th>
               <Th></Th>
@@ -107,6 +108,7 @@ const AdminMain = () => {
               <Tr key={item.id}>
                 <Td>{item.IdolName}</Td>
                 <Td>{item.Album}</Td>
+                <Td>{item.Category}</Td>
                 <Td>{item.Price}</Td>
                 <Td>{item.Count}</Td>
                 <Td>

@@ -37,6 +37,7 @@ const AdminEdit = () => {
       Price: 23000,
       Count: 10,
       Details: "상세 설명",
+      Category: "여자아이돌",
     },
   ]);
 
@@ -81,6 +82,7 @@ const AdminEdit = () => {
   const [Price, setPrice] = useState(0);
   const [Count, setCount] = useState(0);
   const [Details, setDetails] = useState("");
+  const [Category, setCategory] = useState("");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -100,19 +102,19 @@ const AdminEdit = () => {
       Price: Price,
       Count: Count,
       Details: Details,
+      Category: Category,
     };
     setRegister((prev) => {
       return [...prev, newProduct];
     });
+
     setAlbum("");
     setIdolName("");
     setPrice(0);
     setCount(0);
     setDetails("");
 
-    // Firestore에서 'register' 컬렉션에 대한 참조 생성하기
     const collectionRef = collection(db, "product");
-    // 'register' 컬렉션에 newProduct 문서를 추가합니다.
     await addDoc(collectionRef, newProduct);
   };
 
@@ -169,18 +171,17 @@ const AdminEdit = () => {
                 type="number"
               ></Input>
             </div>
-            {/* <div>
+            <div>
               <P1>카테고리</P1>
               <Select name="items">
-                <Option value="1">전체</Option>
-                <Option value="2">여자아이돌</Option>
-                <Option value="3">남자아이돌</Option>
+                <Option value="여자아이돌">여자아이돌</Option>
+                <Option value="남자아이돌">남자아이돌</Option>
               </Select>
             </div>
             <div>
               <P1>사진</P1>
               <Input type="file"></Input>
-            </div> */}
+            </div>
             <div>
               <P1>상품설명</P1>
               <TextArea

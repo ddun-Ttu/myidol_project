@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 export const Nav = styled.div`
   width: 100%;
-  height: 80px;
+  height: 70px;
   margin: ;
   z-index: 99;
   background-color: rgba(0, 0, 0, 0.4);
 
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 `;
@@ -30,6 +30,11 @@ export const NavA = styled(Link)`
   color: #000;
 `;
 
+export const CartA = styled.div`
+  color: #000;
+  cursor: pointer;
+`;
+
 export const NavImg = styled.img`
   width: 41px;
   height: 41px;
@@ -39,11 +44,11 @@ export const NavP = styled.p`
   color: #fff;
   font-weight: 500;
   margin: 4px 0 0 0;
-  font-size: 20px;
+  font-size: 16px;
 `;
 
 export const NavLogo = styled.img`
-  width: 90%;
+  width: 80%;
 `;
 
 export const EmptyCenter = styled.div`
