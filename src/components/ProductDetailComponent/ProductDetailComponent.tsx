@@ -119,7 +119,7 @@ const ProductDetail = () => {
     };
 
     try {
-      const docRef = await addDoc(collection(db, "cart"), cartItem); 
+      const docRef = await addDoc(collection(db, "cart"), cartItem);
     } catch (e) {
       console.error("Error adding cart item: ", e);
     }
@@ -136,9 +136,9 @@ const ProductDetail = () => {
 
   return (
     <>
+      <MainNav />
       <ContainerPro>
         <BasicBlack2>
-          <MainNav />
           <Div>
             <DivLeft>
               <ProductImage src={img} />

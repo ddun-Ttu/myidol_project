@@ -1,8 +1,8 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import MainNav from "../CommonComponent/MainNav/MainNav";
 import { db } from "../../firebase/firebase";
-import { collection, getDocs, query} from "firebase/firestore";
+import { collection, getDocs, query } from "firebase/firestore";
 
 // css styles
 import { Container, BasicBlack2 } from "../../styles/Container";
@@ -14,6 +14,7 @@ import {
   ItemTitle,
   ItemPrice,
   Div2,
+  ItemIdolName,
 } from "./CategoryComponentStyle";
 
 const CategoryComponent = () => {
@@ -52,6 +53,10 @@ const CategoryComponent = () => {
     navigate(`/product/${id}`, { state: { id } });
   };
 
+  const addCommas = (num: string) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   return (
     <>
       <BannerDiv>
@@ -66,9 +71,9 @@ const CategoryComponent = () => {
               <button key={item.id} onClick={() => handleDetailsClick(item.id)}>
                 <ItemWrapper>
                   <ItemImage src={item.ImagePath} />
-                  <ItemTitle>{item.IdolName}</ItemTitle>
+                  <ItemIdolName>{item.IdolName}</ItemIdolName>
                   <ItemTitle>{item.Album}</ItemTitle>
-                  <ItemPrice>₩{item.Price}</ItemPrice>
+                  <ItemPrice>{addCommas(item.Price)}</ItemPrice>
                 </ItemWrapper>
               </button>
             ))}

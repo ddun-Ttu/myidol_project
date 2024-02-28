@@ -84,8 +84,8 @@ const MainComponent = () => {
 
   return (
     <>
+      <MainNav />
       <BannerDiv>
-        <MainNav />
         <div>
           <Slider {...settings}>
             <img src={Img3} alt="Slide 1" />
@@ -112,9 +112,8 @@ const MainComponent = () => {
             ))}
           </Div2>
 
-          <Category>남자아이돌</Category>
           <SeeMoreA onClick={() => handleSeeMoreClick("남자아이돌")}>
-            더보기 ▷
+            <Category>남자아이돌</Category>
           </SeeMoreA>
           <Div2>
             {boy8FemaleIdolProducts.map((item) => (
