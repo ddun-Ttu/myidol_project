@@ -33,6 +33,7 @@ const MainComponent = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
   const navigate = useNavigate();
   const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -87,7 +88,7 @@ const MainComponent = () => {
       <MainNav />
       <BannerDiv>
         <div>
-          <Slider {...settings}>
+          <Slider arrows={false} {...settings}>
             <img src={Img3} alt="Slide 1" />
             <img src={Img1} alt="Slide 1" />
             <img src={Img2} alt="Slide 1" />
