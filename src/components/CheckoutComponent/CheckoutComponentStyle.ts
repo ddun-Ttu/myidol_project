@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const CartContainer = styled.div`
@@ -64,6 +65,7 @@ export const CheckoutButton = styled.button`
   }
 `;
 export const DivButton = styled.div`
- align-items: right;
+  align-items: right;
+`;
 
-`
+export const Alink = styled(Link)``;
