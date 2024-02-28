@@ -4,14 +4,14 @@ export const CartContainer = styled.div`
   max-width: 70%;
   margin: 0 auto;
   margin-top: 20%;
-  padding: 5%;
+  padding: 4%;
   border: 1px solid #ccc;
   border-radius: 5px;
 `;
 
 export const CartTitle = styled.h2`
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  font-size: 24px;
+  margin-bottom: 5%;
 `;
 
 export const CartItemContainer = styled.div`
@@ -24,24 +24,26 @@ export const CartItem = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 2%;
+
+  font-size: 18px;
 `;
 
-export const ItemName = styled.div`
-  font-weight: bold;
-`;
+export const ItemName = styled.div``;
 
 export const ItemQuantity = styled.div`
   color: #777;
 `;
 
 export const ItemPrice = styled.div`
-  font-weight: bold;
+  font-weight: 600;
 `;
 
 export const TotalPrice = styled.div`
+  font-size: 20px;
   margin-top: 20px;
-  font-weight: bold;
+  font-weight: 600;
+  text-align: right;
 `;
 
 export const CheckoutButton = styled.button`
@@ -49,8 +51,11 @@ export const CheckoutButton = styled.button`
   color: #fff;
   border: none;
   padding: 10px;
-  border-radius: 3px;
-  font-size: 1rem;
+  width: 20%;
+  height: 46px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
   margin-top: 20px;
 
@@ -58,3 +63,7 @@ export const CheckoutButton = styled.button`
     background-color: #0056b3;
   }
 `;
+export const DivButton = styled.div`
+ align-items: right;
+
+`

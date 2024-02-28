@@ -13,6 +13,7 @@ import {
   ItemPrice,
   TotalPrice,
   CheckoutButton,
+  DivButton,
 } from "./CheckoutComponentStyle";
 
 const CheckoutComponent = () => {
@@ -57,7 +58,7 @@ const CheckoutComponent = () => {
     <>
       <MainNav />
       <CartContainer>
-        <CartTitle>장바구니</CartTitle>
+        <CartTitle>주문/결제</CartTitle>
         <CartItemContainer>
           {initialCart.map((item) => (
             <CartItem key={item.id}>
@@ -68,11 +69,15 @@ const CheckoutComponent = () => {
             </CartItem>
           ))}
         </CartItemContainer>
-        <TotalPrice>
-          총 가격:
-          {addCommas(initialCart.reduce((acc, cur) => acc + cur.totalPrice, 0))}
-          원
-        </TotalPrice>
+        <DivButton>
+          <TotalPrice>
+            총 가격:
+            {addCommas(
+              initialCart.reduce((acc, cur) => acc + cur.totalPrice, 0)
+            )}
+            원
+          </TotalPrice>
+        </DivButton>
         <CheckoutButton>결제하기</CheckoutButton>
       </CartContainer>
     </>
