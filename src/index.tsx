@@ -11,7 +11,7 @@ import Main from "./pages/Main/Main";
 import CotegoryList from "./pages/CategoryList/CategoryList";
 import GlobalStyles from "./styles/GlobalStyles";
 import Checkout from "./pages/Checkout/Checkout";
-import Payment from "./Components/CheckoutComponent/PaymentComponent";
+import Payment from "./components/CheckoutComponent/PaymentComponent";
 
 // import app from "./firebase/firebase";
 
