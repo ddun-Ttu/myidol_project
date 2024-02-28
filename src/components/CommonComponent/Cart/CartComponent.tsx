@@ -106,7 +106,6 @@ const Cart = () => {
     }
   };
 
-
   return (
     <>
       {isLoggedIn ? (
@@ -150,8 +149,9 @@ const Cart = () => {
                   initialCart.reduce((acc, cur) => acc + cur.totalPrice, 0)
                 )}
               </P1>
-
-              <BuyButton>전체 구매하기</BuyButton>
+              <NavA to="/checkout">
+                <BuyButton>전체 구매하기</BuyButton>
+              </NavA>
             </>
           ) : (
             <H1>장바구니가 비어 있습니다.</H1>
