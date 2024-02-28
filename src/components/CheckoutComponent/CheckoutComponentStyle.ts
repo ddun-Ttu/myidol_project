@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const CartContainer = styled.div`
-  max-width: 70%;
+  max-width: 60%;
   margin: 0 auto;
   margin-top: 20%;
   padding: 4%;
@@ -69,3 +69,41 @@ export const DivButton = styled.div`
 `;
 
 export const Alink = styled(Link)``;
+
+// 주문결제창 스타일
+
+export const PaymentForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const FormTitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 5%;
+`;
+
+export const FormRow = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+`;
+
+export const InputLabel = styled.label`
+  font-size: 18px;
+  margin-bottom: 5px;
+`;
+
+export const InputField = styled.input`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 18px;
+`;
+
+export const Line = styled.div`
+  width: 100%;
+  height: 1px; /* 선 길이 */
+  background-color: #ccc; /* 선 색상 */
+  margin-top: 4%;
+  margin: 5% auto;
+`;
