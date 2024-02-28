@@ -18,6 +18,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 // 상품등록 페이지
 const AdminRegister = () => {
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [register, setRegister] = useState([
     {
       Album: "I'VE MINE 미니 1집",
@@ -102,24 +103,6 @@ const AdminRegister = () => {
 
     const collectionRef = collection(db, "product");
     await addDoc(collectionRef, newProduct);
-
-    await handleUpload();
-  };
-
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-
-  const handleUpload = async () => {
-    if (selectedFile) {
-      const imageRef = ref(
-        storage,
-        `${
-          auth.currentUser && auth.currentUser.uid
-        }/${IdolName}_${Date.now()}_${selectedFile.name}`
-      );
-      await uploadBytes(imageRef, selectedFile);
-
-      const downloadURL: string = await getDownloadURL(imageRef);
-    }
   };
 
   const handleFileSelect = (event: any) => {
