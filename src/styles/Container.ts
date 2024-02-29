@@ -26,6 +26,7 @@ export const BasicBlack1 = styled.div`
 export const BasicBlack2 = styled.div`
   width: 100%;
   background-color: #000;
+  padding-bottom: 8%;
 `;
 
 /* [ align-items: center;] 
