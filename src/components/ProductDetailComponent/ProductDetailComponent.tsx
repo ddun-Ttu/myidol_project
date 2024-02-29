@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { auth, db } from "../../firebase/firebase";
 import MainNav from "../CommonComponent/MainNav/MainNav";
 import { BasicBlack2 } from "../../styles/Container";
+import Footer from "../CommonComponent/Footer/Footer";
 
 // 스타일
 import {
@@ -178,6 +179,7 @@ const ProductDetail = () => {
             <DetailsExP>{details}</DetailsExP>
           </DetailsExDiv>
         </BasicBlack2>
+        <Footer />
       </ContainerPro>
     </>
   );
