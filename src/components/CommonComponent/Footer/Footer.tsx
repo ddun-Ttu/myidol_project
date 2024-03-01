@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
       <RightText>
         <P>© 2024 마이 아이돌즈. All rights reserved</P>
         <P>https://github.com/ddun-Ttu/myidol_project</P>
-        <P>2024.02.01 ~ 2024.02.29</P>
+        <P>2024.01.24 ~ 2024.02.29</P>
       </RightText>
     </FooterContainer>
   );
