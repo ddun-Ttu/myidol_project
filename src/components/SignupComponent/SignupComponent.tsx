@@ -36,7 +36,7 @@ const SignupComponent = () => {
   // 유저 접속 여부 확인 -> 추후 uid 값으로 페이지 변환시키기
   useEffect(() => {
     onAuthStateChanged(auth, (user: any) => {
-      console.log("유저", user);
+      // console.log("유저", user);
     });
   }, []);
 
@@ -83,8 +83,8 @@ const SignupComponent = () => {
       });
       navigate("/login");
 
-      console.log("유저 로그인 성공 ", userCredential.user);
-      console.log("파이어베이스 정보 저장 ", user);
+      // console.log("유저 로그인 성공 ", userCredential.user);
+      // console.log("파이어베이스 정보 저장 ", user);
     } catch (error: any) {
       const errorCode = error.code;
       const errorMessage = error.message;

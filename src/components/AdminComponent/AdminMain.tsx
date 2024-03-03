@@ -78,16 +78,13 @@ const AdminMain = () => {
         return prev.filter((element) => element.id !== id);
       });
 
-      // 삭제 완료 후 메시지 표시
       Swal.fire({
         icon: "success",
         title: "삭제 완료",
         text: "상품이 성공적으로 삭제되었습니다.",
       });
 
-      // 페이지 다시 로드 또는 상태 업데이트 등 추가 작업
     } catch (error) {
-      // 삭제 에러 발생 시 에러 메시지 표시
       Swal.fire({
         icon: "error",
         title: "삭제 오류",

@@ -56,8 +56,7 @@ const LoginComponent = () => {
         email,
         password
       );
-
-      console.log("유저 로그인 성공 ", userCredential.user);
+      // console.log("유저 로그인 성공 ", userCredential.user);
 
       navigate("/");
     } catch (error: any) {
@@ -101,9 +100,7 @@ const LoginComponent = () => {
             </LoginForm>
 
             <div>
-              <Button onClick={SignIn}>
-                로그인하기
-              </Button>
+              <Button onClick={SignIn}>로그인하기</Button>
             </div>
           </DivLogin1>
 
