@@ -10,7 +10,9 @@ const Footer: React.FC = () => {
       </LeftText>
       <RightText>
         <P>© 2024 마이 아이돌즈. All rights reserved</P>
-        <P>https://github.com/ddun-Ttu/myidol_project</P>
+        <a href="https://github.com/ddun-Ttu/myidol_project" target="_blank">
+          <P>https://github.com/ddun-Ttu/myidol_project</P>
+        </a>
         <P>2024.01.24 ~ 2024.02.29</P>
         <P>개인프로젝트</P>
       </RightText>
