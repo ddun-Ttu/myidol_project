@@ -13,3 +13,23 @@
 ## 유저플로우
 
 ![유저플로우](/src/assets/ReadmeImg/%EC%9C%A0%EC%A0%80%ED%94%8C%EB%A1%9C%EC%9A%B0.jpg)
+
+
+## 기술 스택
+
+* 프로그래밍 언어
+    * TypeScript
+* 프레임워크
+    * React
+* 백엔드 서비스
+    * Firebase / Firebase Cloud Storage 
+* API 호출
+    * HTTP Request / Response
+* 빌드 툴
+    * Vite
+* 페이지 라우팅
+    * React Router
+* 스타일 라이브러리
+    * styled-components
+* 배포
+    * vercel
