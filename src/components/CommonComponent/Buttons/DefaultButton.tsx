@@ -1,7 +1,18 @@
-import { } from './DefaultButtonStyle';
+import {} from "./DefaultButtonStyle";
+import{Button} from "./DefaultButtonStyle";
 
-const DefaultButton = () => {
-  return<></>;
+type DefaultButtonProps = {
+  onClick: () => void;
+  text: string;
+
+}
+
+const DefaultButton = ({onClick, text}: DefaultButtonProps) => {
+  return (
+    <>
+      <Button onClick={onClick}>{text}</Button>
+    </>
+  );
 };
 
 export default DefaultButton;

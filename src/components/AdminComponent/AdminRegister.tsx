@@ -15,7 +15,7 @@ import {
 } from "./AdminComponentStyle";
 import { ContainerWhite } from "../../styles/Container";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { ProductType } from "src/types/Models/models";
+import { ProductType } from "src/types/models";
 
 const data: ProductType = {
   Album: "I'VE MINE 미니 1집",
@@ -81,7 +81,7 @@ const AdminRegister: React.FC = () => {
       imageURL = await getDownloadURL(imageRef);
     }
 
-    const newProduct = {
+    const newProduct: ProductType = {
       Album: Album,
       IdolName: IdolName,
       Price: Price,

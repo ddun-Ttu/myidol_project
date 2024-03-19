@@ -7,4 +7,3 @@ export type ProductType = {
   ImagePath: string;
   Category: string;
 };
-
