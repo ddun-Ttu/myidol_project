@@ -26,7 +26,7 @@ import {
   LinkBtn,
 } from "./AdminComponentStyle";
 
-const AdminMain = () => {
+const AdminMain:React.FC = () => {
   const [initialProduct, setInitialProduct] = useState<any[]>([]);
   const [selectedProductId, setSelectedProductId] = useState<any | null>(null);
   const { pathname } = useLocation();

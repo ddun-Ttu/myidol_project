@@ -15,29 +15,30 @@ import {
 } from "./AdminComponentStyle";
 import { ContainerWhite } from "../../styles/Container";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { ProductType } from "src/types/Models/models";
+
+const data: ProductType = {
+  Album: "I'VE MINE 미니 1집",
+  IdolName: "아이브",
+  Price: 23000,
+  Count: 10,
+  Details: "아이브 미니 앨범",
+  ImagePath: "",
+  Category: "여자아이돌",
+};
 
 // 상품등록 페이지
-const AdminRegister = () => {
+const AdminRegister: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [register, setRegister] = useState([
-    {
-      Album: "I'VE MINE 미니 1집",
-      IdolName: "아이브",
-      Price: 23000,
-      Count: 10,
-      Details: "아이브 미니 앨범",
-      ImagePath: "",
-      Category: "여자아이돌",
-    },
-  ]);
+  const [register, setRegister] = useState<ProductType>(data);
 
   // 상품 Input 기본값 리셋
-  const [Album, setAlbum] = useState("");
-  const [IdolName, setIdolName] = useState("");
-  const [Price, setPrice] = useState(0);
-  const [Count, setCount] = useState(0);
-  const [Details, setDetails] = useState("");
-  const [Category, setCategory] = useState("");
+  const [Album, setAlbum] = useState<string>("");
+  const [IdolName, setIdolName] = useState<string>("");
+  const [Price, setPrice] = useState<number>(0);
+  const [Count, setCount] = useState<number>(0);
+  const [Details, setDetails] = useState<string>("");
+  const [Category, setCategory] = useState<string>("");
 
   const onChange = (event: any) => {
     const {
